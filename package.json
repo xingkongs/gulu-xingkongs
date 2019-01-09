@@ -1,0 +1,9 @@
+{
+  "name": "gulu-xingkongs",
+  "version": "1.0.0",
+  "description": "gulu UI",
+  "main": "index.js",
+  "repository": "git@github.com:xingkongs/gulu-xingkongs.git",
+  "author": "xingkongs <ldk8259878@163.com>",
+  "license": "MIT"
+}
