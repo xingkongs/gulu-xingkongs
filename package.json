@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:xingkongs/gulu-xingkongs.git",
   "author": "xingkongs <ldk8259878@163.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.5.21"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0"
+  }
 }
