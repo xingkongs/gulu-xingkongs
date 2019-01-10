@@ -7,7 +7,9 @@
   "author": "xingkongs <ldk8259878@163.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npx parcel index.html --no-cache"
+    "start": "npx parcel index.html --no-cache",
+    "dev-test": "parcel watch test/* --no-cache & karma start",
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
   "dependencies": {
     "chai": "*",
@@ -17,8 +19,17 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.5.0",
+    "karma": "^3.1.4",
+    "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-sinon-chai": "^2.0.2",
+    "mocha": "^5.2.0",
     "parcel-bundler": "^1.11.0",
     "sass": "^1.15.3",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0",
     "vue-template-compiler": "^2.5.21"
   },
   "alias": {
