@@ -6,6 +6,9 @@
   "repository": "git@github.com:xingkongs/gulu-xingkongs.git",
   "author": "xingkongs <ldk8259878@163.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "npx parcel index.html --no-cache"
+  },
   "dependencies": {
     "vue": "^2.5.21",
     "vue-hot-reload-api": "^2.3.1"
