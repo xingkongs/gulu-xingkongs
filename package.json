@@ -10,7 +10,8 @@
     "start": "npx parcel index.html --no-cache"
   },
   "dependencies": {
-    "chai": "^4.2.0",
+    "chai": "*",
+    "chai-spies": "^1.0.0",
     "vue": "^2.5.21",
     "vue-hot-reload-api": "^2.3.1"
   },

@@ -19,7 +19,8 @@ new Vue({
 })
 
 import chai from 'chai'
-
+import spies from 'chai-spies'
+chai.use(spies);
 const expect  = chai.expect
 
 {
@@ -85,10 +86,9 @@ const expect  = chai.expect
             icon:'settings'
         }
     }).$mount()
+    const spy = chai.spy(function () {})
     const button = gButton.$el
-    gButton.$on('click',function () {
-        console.log(1)
-    })
+    gButton.$on('click',spy)
     button.click()
-    gButton.$destroy()
+    expect(spy).to.have.been.called()
 }
