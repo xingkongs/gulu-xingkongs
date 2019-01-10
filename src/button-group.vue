@@ -12,6 +12,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "./style/var";
     .button-group {
         display: inline-flex;
         align-items: center;
@@ -24,13 +25,13 @@
                 margin-left: -1px;
             }
             &:first-of-type {
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
+                border-top-left-radius: $border-radius;
+                border-bottom-left-radius: $border-radius;
             }
 
             &:last-of-type {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
+                border-top-right-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
             }
         }
     }

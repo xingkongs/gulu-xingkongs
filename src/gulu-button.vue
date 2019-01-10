@@ -10,7 +10,6 @@
 
 <script>
     import Icon from './gulu-icon'
-
     export default {
         name: "GuluButton",
         props: {
@@ -34,32 +33,24 @@
 </script>
 
 <style lang="scss" scoped>
-    @keyframes loading {
-        0% {
-            transform: rotate(0)
-        }
-        100% {
-            transform: rotate(360deg)
-        }
-    }
-
+    @import './style/_var.scss';
     .gulu-button {
-        font-size: var(--font-size);
-        height: var(--button-height);
+        font-size: $font-size;
+        height: $button-height;
         padding: 0 1em;
-        border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         vertical-align: middle;
 
         &:hover {
-            border-color: var(--border-color-hover);
+            border-color: $border-color-hover;
         }
 
         &:active {
-            background-color: var(--button-active-bg);
+            background-color: $button-active-bg;
         }
 
         &:focus {
@@ -85,7 +76,7 @@
             }
         }
         .loading {
-            animation: loading 1s infinite linear;
+            @include loading
         }
     }
 </style>
