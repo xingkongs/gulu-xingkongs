@@ -7,6 +7,14 @@
 <script>
     export default {
         name: "button-group",
+        mounted(){
+            for(let node of this.$el.children){
+               let name = node.nodeName.toLowerCase();
+               if(name !== 'button'){
+                   console.warn(`button-group的子组件应该是 g-button`)
+               }
+           }
+        }
 
     }
 </script>
