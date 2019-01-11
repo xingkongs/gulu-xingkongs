@@ -45,6 +45,7 @@
     .input--wrapper {
         font-size: $font-size;
         display: inline-flex;
+        vertical-align: middle;
         align-items: center;
         justify-content: center;
 
