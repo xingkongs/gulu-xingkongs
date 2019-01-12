@@ -10,12 +10,14 @@
     <meta name="description" content="description">
     <meta name="keywords" content="keywords">
     <style>
-        *{
-            margin:0;padding:0;
-            box-sizing:border-box;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .box{
-            margin:20px;
+
+        .box {
+            margin: 20px;
             background: #ccc;
         }
     </style>
@@ -23,53 +25,70 @@
 <body>
 <div id="app">
     <div class="box">
-        <g-row align="left">
-            <g-col span="1">1</g-col>
-            <g-col span="1">2</g-col>
-            <g-col span="2">3</g-col>
-            <g-col span="3">4</g-col>
-        </g-row>
-        <g-row align="right">
-            <g-col span="1">1</g-col>
-            <g-col span="8">2</g-col>
-            <g-col span="8">3</g-col>
-        </g-row>
-        <g-row>
-            <g-col span="6">1</g-col>
-            <g-col span="6">2</g-col>
-            <g-col span="6">3</g-col>
-            <g-col span="6">4</g-col>
-        </g-row>
-        <g-row>
-            <g-col span="1">1</g-col>
-            <g-col span="22" offset="1">2</g-col>
-        </g-row>
-        <g-row>
-            <g-col span="8">1</g-col>
-            <g-col span="6" offset="2">2</g-col>
-            <g-col span="8">3</g-col>
-        </g-row>
-        <g-row>
-            <g-col span="6">1</g-col>
-            <g-col span="6">2</g-col>
-            <g-col span="3" offset="2">3</g-col>
-            <g-col span="6" offset="1">4</g-col>
-        </g-row>
         <g-row gutter="20">
-            <g-col span="12">1</g-col>
-            <g-col span="12">2</g-col>
+            <g-col :span="24"
+                   :ipad="{span:8}"
+                   :narrow-pc="{span:6}"
+                   :pc="{span:4}"
+                   :wide-pc="{span:2}">1
+            </g-col>
+            <g-col :span="24"
+                   :ipad="{span:16}"
+                   :narrow-pc="{span:18}"
+                   :pc="{span:20}"
+                   :wide-pc="{span:22}">2
+            </g-col>
         </g-row>
-        <g-row gutter="20">
-            <g-col span="8">1</g-col>
-            <g-col span="8">2</g-col>
-            <g-col span="8">3</g-col>
-        </g-row>
-        <g-row gutter="20">
-            <g-col span="6">1</g-col>
-            <g-col span="6">2</g-col>
-            <g-col span="6">3</g-col>
-            <g-col span="6">4</g-col>
-        </g-row>
+        <div>
+            <g-row align="left">
+                <g-col span="1">1</g-col>
+                <g-col span="1">2</g-col>
+                <g-col span="2">3</g-col>
+                <g-col span="3">4</g-col>
+            </g-row>
+            <g-row align="right">
+                <g-col span="1">1</g-col>
+                <g-col span="8">2</g-col>
+                <g-col span="8">3</g-col>
+            </g-row>
+            <g-row>
+                <g-col span="6">1</g-col>
+                <g-col span="6">2</g-col>
+                <g-col span="6">3</g-col>
+                <g-col span="6">4</g-col>
+            </g-row>
+            <g-row>
+                <g-col span="1">1</g-col>
+                <g-col span="22" offset="1">2</g-col>
+            </g-row>
+            <g-row>
+                <g-col span="8">1</g-col>
+                <g-col span="6" offset="2">2</g-col>
+                <g-col span="8">3</g-col>
+            </g-row>
+            <g-row>
+                <g-col span="6">1</g-col>
+                <g-col span="6">2</g-col>
+                <g-col span="3" offset="2">3</g-col>
+                <g-col span="6" offset="1">4</g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="12">1</g-col>
+                <g-col span="12">2</g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="8">1</g-col>
+                <g-col span="8">2</g-col>
+                <g-col span="8">3</g-col>
+            </g-row>
+            <g-row gutter="20">
+                <g-col span="6">1</g-col>
+                <g-col span="6">2</g-col>
+                <g-col span="6">3</g-col>
+                <g-col span="6">4</g-col>
+            </g-row>
+        </div>
+
     </div>
 </div>
 <div id="test"></div>
