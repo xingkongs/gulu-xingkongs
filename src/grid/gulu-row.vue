@@ -13,8 +13,8 @@
             },
             align:{
                 type:String,
-                validate(value){
-                    return ['left','right','center'].indexOf(value)>0
+                validator(value){
+                    return ['left','right','center'].indexOf(value)>=0
                 }
             }
         },
