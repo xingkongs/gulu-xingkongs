@@ -20,76 +20,47 @@
             margin: 20px;
             background: #ccc;
         }
+        .demo{
+            border:1px solid red;
+            min-height:100px;
+        }
+        .layout--wrapper{
+            height:100vh;
+        }
     </style>
 </head>
 <body>
 <div id="app">
-    <div class="box">
-        <g-row gutter="20">
-            <g-col :span="24"
-                   :ipad="{span:8}"
-                   :narrow-pc="{span:6}"
-                   :pc="{span:4}"
-                   :wide-pc="{span:2}">1
-            </g-col>
-            <g-col :span="24"
-                   :ipad="{span:16}"
-                   :narrow-pc="{span:18}"
-                   :pc="{span:20}"
-                   :wide-pc="{span:22}">2
-            </g-col>
-        </g-row>
-        <div>
-            <g-row align="left">
-                <g-col span="1">1</g-col>
-                <g-col span="1">2</g-col>
-                <g-col span="2">3</g-col>
-                <g-col span="3">4</g-col>
-            </g-row>
-            <g-row align="right">
-                <g-col span="1">1</g-col>
-                <g-col span="8">2</g-col>
-                <g-col span="8">3</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="6">1</g-col>
-                <g-col span="6">2</g-col>
-                <g-col span="6">3</g-col>
-                <g-col span="6">4</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="1">1</g-col>
-                <g-col span="22" offset="1">2</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="8">1</g-col>
-                <g-col span="6" offset="2">2</g-col>
-                <g-col span="8">3</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="6">1</g-col>
-                <g-col span="6">2</g-col>
-                <g-col span="3" offset="2">3</g-col>
-                <g-col span="6" offset="1">4</g-col>
-            </g-row>
-            <g-row gutter="20">
-                <g-col span="12">1</g-col>
-                <g-col span="12">2</g-col>
-            </g-row>
-            <g-row gutter="20">
-                <g-col span="8">1</g-col>
-                <g-col span="8">2</g-col>
-                <g-col span="8">3</g-col>
-            </g-row>
-            <g-row gutter="20">
-                <g-col span="6">1</g-col>
-                <g-col span="6">2</g-col>
-                <g-col span="6">3</g-col>
-                <g-col span="6">4</g-col>
-            </g-row>
-        </div>
+    <g-layout class="layout--wrapper" style="display: none">
+        <g-header class="demo">header</g-header>
+        <g-content class="demo">content</g-content>
+        <g-footer class="demo">footer</g-footer>
+    </g-layout>
+    <g-layout class="layout--wrapper" style="display: none;">
+        <g-header class="demo">header</g-header>
+        <g-layout>
+            <g-sider class="demo">sider</g-sider>
+            <g-content class="demo">content</g-content>
+        </g-layout>
 
-    </div>
+        <g-footer class="demo">footer</g-footer>
+    </g-layout>
+    <g-layout class="layout--wrapper" style="display: none;">
+        <g-header class="demo">header</g-header>
+        <g-layout>
+            <g-content class="demo">content</g-content>
+            <g-sider class="demo">sider</g-sider>
+        </g-layout>
+        <g-footer class="demo">footer</g-footer>
+    </g-layout>
+    <g-layout class="layout--wrapper">
+        <g-sider class="demo">sider</g-sider>
+        <g-layout>
+            <g-header class="demo">header</g-header>
+            <g-content class="demo">content</g-content>
+            <g-footer class="demo">footer</g-footer>
+        </g-layout>
+    </g-layout>
 </div>
 <div id="test"></div>
 <script src="./src/app.js"></script>
