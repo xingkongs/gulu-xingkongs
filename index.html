@@ -27,6 +27,19 @@
         .layout--wrapper{
             height:100vh;
         }
+        .header{
+            background: #999;
+        }
+        .sider{
+            background: #666;
+            width:300px;
+        }
+        .content{
+            background: #ccc;
+        }
+        .footer{
+            background: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -54,11 +67,11 @@
         <g-footer class="demo">footer</g-footer>
     </g-layout>
     <g-layout class="layout--wrapper">
-        <g-sider class="demo">sider</g-sider>
+        <g-sider class="demo sider">sider</g-sider>
         <g-layout>
-            <g-header class="demo">header</g-header>
-            <g-content class="demo">content</g-content>
-            <g-footer class="demo">footer</g-footer>
+            <g-header class="demo header">header</g-header>
+            <g-content class="demo content">content</g-content>
+            <g-footer class="demo footer">footer</g-footer>
         </g-layout>
     </g-layout>
 </div>
