@@ -10,6 +10,8 @@ import Guluheader from './layout/header'
 import Gulucontent from './layout/content'
 import Gulufooter from './layout/footer'
 import Gulusider from './layout/sider'
+import GuluToast from './gulu-toast'
+import plugin from './plugin'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -22,6 +24,8 @@ Vue.component('g-header',Guluheader)
 Vue.component('g-content',Gulucontent)
 Vue.component('g-footer',Gulufooter)
 Vue.component('g-sider',Gulusider)
+Vue.component('g-toast',GuluToast)
+Vue.use(plugin)
 
 new Vue({
     el: "#app",
@@ -35,6 +39,9 @@ new Vue({
     methods: {
         inputChange(e){
             console.log(e)
+        },
+        showToast(){
+            this.$toast('点我!')
         }
     }
 })

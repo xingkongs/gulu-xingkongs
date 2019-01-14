@@ -20,60 +20,11 @@
             margin: 20px;
             background: #ccc;
         }
-        .demo{
-            border:1px solid red;
-            min-height:100px;
-        }
-        .layout--wrapper{
-            height:100vh;
-        }
-        .header{
-            background: #999;
-        }
-        .sider{
-            background: #666;
-            width:300px;
-        }
-        .content{
-            background: #ccc;
-        }
-        .footer{
-            background: #ddd;
-        }
     </style>
 </head>
 <body>
 <div id="app">
-    <g-layout class="layout--wrapper" style="display: none">
-        <g-header class="demo">header</g-header>
-        <g-content class="demo">content</g-content>
-        <g-footer class="demo">footer</g-footer>
-    </g-layout>
-    <g-layout class="layout--wrapper" style="display: none;">
-        <g-header class="demo">header</g-header>
-        <g-layout>
-            <g-sider class="demo">sider</g-sider>
-            <g-content class="demo">content</g-content>
-        </g-layout>
-
-        <g-footer class="demo">footer</g-footer>
-    </g-layout>
-    <g-layout class="layout--wrapper" style="display: none;">
-        <g-header class="demo">header</g-header>
-        <g-layout>
-            <g-content class="demo">content</g-content>
-            <g-sider class="demo">sider</g-sider>
-        </g-layout>
-        <g-footer class="demo">footer</g-footer>
-    </g-layout>
-    <g-layout class="layout--wrapper">
-        <g-sider class="demo sider">sider</g-sider>
-        <g-layout>
-            <g-header class="demo header">header</g-header>
-            <g-content class="demo content">content</g-content>
-            <g-footer class="demo footer">footer</g-footer>
-        </g-layout>
-    </g-layout>
+    <g-button @click="showToast">click</g-button>
 </div>
 <div id="test"></div>
 <script src="./src/app.js"></script>
