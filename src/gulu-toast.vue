@@ -5,8 +5,8 @@
                 <slot v-if="!enableHtml"></slot>
                 <div v-else="enableHtml" v-html="$slots.default[0]"></div>
             </div>
+            <div class="line" ref="line"></div>
             <template v-if="closeButton">
-                <div class="line" ref="line"></div>
                 <div class="closeButton" @click="clickButton">
                     {{closeButton.text}}
                 </div>
@@ -58,9 +58,12 @@
                 }, this.autoClose * 1000)
             }
             this.$nextTick(() => {
-                this.$refs.line.style.height = `
+                if(this.$refs.line){
+                    this.$refs.line.style.height = `
                 ${this.$refs.toast.getBoundingClientRect().height}px
             `
+                }
+
             })
 
         },
