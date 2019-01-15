@@ -1,6 +1,7 @@
 <template>
     <div class="g-toast" ref="toastWrapper">
-        <slot></slot>
+        <slot v-if="!enableHtml"></slot>
+        <div v-else="enableHtml" v-html="$slots.default[0]"></div>
         <template v-if="closeButton">
             <div class="line" ref="line"></div>
             <div class="closeButton" @click="clickButton">
@@ -30,6 +31,10 @@
                         callback:undefined
                     }
                 }
+            },
+            enableHtml:{
+                type:Boolean,
+                default:false
             }
         },
         mounted(){
