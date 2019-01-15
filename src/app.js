@@ -40,8 +40,17 @@ new Vue({
         inputChange(e){
             console.log(e)
         },
-        showToast(){
-            this.$toast(`信息${parseInt(Math.random()*100)}`,{
+        showTop(){
+            this.showToast('top')
+        },
+        showMiddle(){
+            this.showToast('middle')
+        },
+        showBottom(){
+            this.showToast('bottom')
+        },
+        showToast(position){
+            this.$toast(`你的余额为${parseInt(Math.random()*100)}。请充值...`,{
                 closeButton:{
                     text:'知道了',
                     callback(toast){
@@ -49,7 +58,8 @@ new Vue({
                     }
                 },
                 enableHtml:true,
-                autoClose:false
+                autoClose:false,
+                position
             })
         }
     }

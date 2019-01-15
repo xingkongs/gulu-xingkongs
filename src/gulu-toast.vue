@@ -1,16 +1,17 @@
 <template>
-    <div class="g-toast" ref="toastWrapper" :class="toastClasses">
-        <div class="toast_content">
-            <slot v-if="!enableHtml"></slot>
-            <div v-else="enableHtml" v-html="$slots.default[0]"></div>
-        </div>
-        <template v-if="closeButton">
-            <div class="line" ref="line"></div>
-            <div class="closeButton" @click="clickButton">
-                {{closeButton.text}}
+    <div class="wrapper" :class="toastClasses">
+        <div class="g-toast" ref="toast">
+            <div class="toast_content">
+                <slot v-if="!enableHtml"></slot>
+                <div v-else="enableHtml" v-html="$slots.default[0]"></div>
             </div>
-        </template>
-
+            <template v-if="closeButton">
+                <div class="line" ref="line"></div>
+                <div class="closeButton" @click="clickButton">
+                    {{closeButton.text}}
+                </div>
+            </template>
+        </div>
     </div>
 </template>
 <script>
@@ -40,7 +41,7 @@
             },
             position: {
                 type: String,
-                default:'top',
+                default: 'top',
                 validator(value) {
                     return ['top', 'middle', 'bottom'].indexOf(value) >= 0
                 }
@@ -59,7 +60,7 @@
             }
             this.$nextTick(() => {
                 this.$refs.line.style.height = `
-                ${this.$refs.toastWrapper.getBoundingClientRect().height}px
+                ${this.$refs.toast.getBoundingClientRect().height}px
             `
             })
 
@@ -85,11 +86,70 @@
 <style scoped lang="scss">
     @import './style/var';
 
-    .g-toast {
-        font-size: $font-size;
-        background: rgba(0, 0, 0, 0.7);
+    @keyframes fade-in {
+        0% {
+            opacity: 0
+        }
+        100% {
+            opacity: 100%
+        }
+    }
+
+    @keyframes slide-up {
+        0% {
+            transform: translateY(-100%)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes slide-down {
+        0% {
+            transform: translateY(100%)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    .wrapper {
         position: fixed;
         left: 50%;
+        transform: translateX(-50%);
+
+        &.position-top {
+            top: 0;
+
+            .g-toast {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                animation: slide-up $toast-animation-delay;
+            }
+
+        }
+
+        &.position-middle {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            animation: fade-in $toast-animation-delay;
+        }
+
+        &.position-bottom {
+            bottom: 0;
+
+            .g-toast {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                animation: slide-down $toast-animation-delay;
+            }
+
+        }
+    }
+
+    .g-toast {
+        font-size: $font-size;
+        background: $toast-bg;
         color: $toast-color;
         min-height: $toast-min-height;
         padding: 0 0.8em;
@@ -97,18 +157,7 @@
         align-items: center;
         text-align: center;
         border-radius: $border-radius;
-        &.position-top{
-            top: 0;
-            transform: translateX(-50%);
-        }
-        &.position-middle{
-            top: 50%;
-            transform: translate(-50%,-50%);
-        }
-        &.position-bottom{
-            bottom: 0;
-            transform: translateX(-50%);
-        }
+
         & .toast_content {
             padding: 0.5em 0;
         }
