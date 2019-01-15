@@ -1,8 +1,8 @@
 <template>
-    <div class="g-toast">
+    <div class="g-toast" ref="toastWrapper">
         <slot></slot>
         <template v-if="closeButton">
-            <div class="line"></div>
+            <div class="line" ref="line"></div>
             <div class="closeButton" @click="clickButton">
                 {{closeButton.text}}
             </div>
@@ -20,7 +20,7 @@
             },
             autoCloseDelay:{
                 type:Number,
-                default:3
+                default:50
             },
             closeButton:{
                 type:Object,
@@ -38,6 +38,12 @@
                     this.close()
                 },this.autoCloseDelay*1000)
             }
+            this.$nextTick(()=>{
+                this.$refs.line.style.height = `
+                ${this.$refs.toastWrapper.getBoundingClientRect().height}px
+            `
+            })
+
         },
         methods:{
             close(){
@@ -66,7 +72,7 @@
         left: 50%;
         transform: translateX(-50%);
         color: #fff;
-        height: $height;
+        min-height: $height;
         padding: 0.2em 0.5em;
         display: flex;
         align-items: center;
@@ -77,9 +83,9 @@
             background: transparent;
             color:inherit;
             padding-left:0.5em;
+            flex-shrink:0;
         }
         & .line{
-            height:100%;
             border-left:1px solid #fff;
             margin-left:0.5em;
         }
