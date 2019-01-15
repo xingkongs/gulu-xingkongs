@@ -41,14 +41,15 @@ new Vue({
             console.log(e)
         },
         showToast(){
-            this.$toast(`<p>标签信息显示<strong>这里</strong><a href="//www.d1ev.com">d1ev</a></p>`,{
+            this.$toast(`信息`,{
                 closeButton:{
                     text:'知道了',
                     callback(toast){
                         toast.test()
                     }
                 },
-                enableHtml:true
+                enableHtml:true,
+                autoClose:false
             })
         }
     }

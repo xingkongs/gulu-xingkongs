@@ -1,7 +1,9 @@
 <template>
-    <div class="g-toast" ref="toastWrapper">
-        <slot v-if="!enableHtml"></slot>
-        <div v-else="enableHtml" v-html="$slots.default[0]"></div>
+    <div class="g-toast" ref="toastWrapper" :class="toastClasses">
+        <div class="toast_content">
+            <slot v-if="!enableHtml"></slot>
+            <div v-else="enableHtml" v-html="$slots.default[0]"></div>
+        </div>
         <template v-if="closeButton">
             <div class="line" ref="line"></div>
             <div class="closeButton" @click="clickButton">
@@ -14,54 +16,66 @@
 <script>
     export default {
         name: "GuluToast",
-        props:{
-            autoClose:{
-                type:Boolean,
-                default:true
+        props: {
+            autoClose: {
+                type: Boolean,
+                default: true
             },
-            autoCloseDelay:{
-                type:Number,
-                default:50
+            autoCloseDelay: {
+                type: Number,
+                default: 5
             },
-            closeButton:{
-                type:Object,
-                default(){
+            closeButton: {
+                type: Object,
+                default() {
                     return {
-                        text:'关闭',
-                        callback:undefined
+                        text: '关闭',
+                        callback: undefined
                     }
                 }
             },
-            enableHtml:{
-                type:Boolean,
-                default:false
+            enableHtml: {
+                type: Boolean,
+                default: false
+            },
+            position: {
+                type: String,
+                default:'top',
+                validator(value) {
+                    return ['top', 'middle', 'bottom'].indexOf(value) >= 0
+                }
             }
         },
-        mounted(){
-            if(this.autoClose){
-                let timer = setTimeout(()=>{
-                    this.close()
-                },this.autoCloseDelay*1000)
+        computed: {
+            toastClasses() {
+                return {[`position-${this.position}`]: true}
             }
-            this.$nextTick(()=>{
+        },
+        mounted() {
+            if (this.autoClose) {
+                let timer = setTimeout(() => {
+                    this.close()
+                }, this.autoCloseDelay * 1000)
+            }
+            this.$nextTick(() => {
                 this.$refs.line.style.height = `
                 ${this.$refs.toastWrapper.getBoundingClientRect().height}px
             `
             })
 
         },
-        methods:{
-            close(){
+        methods: {
+            close() {
                 this.$el.remove()
                 this.$destroy()
             },
-            clickButton(){
+            clickButton() {
                 this.close()
-                if(this.closeButton && typeof this.closeButton.callback === 'function'){
+                if (this.closeButton && typeof this.closeButton.callback === 'function') {
                     this.closeButton.callback(this)
                 }
             },
-            test(){
+            test() {
                 console.log('test')
             }
         }
@@ -69,31 +83,47 @@
 </script>
 <style scoped lang="scss">
     @import './style/var';
+
     .g-toast {
         font-size: $font-size;
         background: rgba(0, 0, 0, 0.7);
         position: fixed;
-        top: 0;
         left: 50%;
-        transform: translateX(-50%);
-        color: #fff;
-        min-height: $height;
-        padding: 0.2em 0.5em;
+        color: $toast-color;
+        min-height: $toast-min-height;
+        padding: 0 0.8em;
         display: flex;
         align-items: center;
         text-align: center;
         border-radius: $border-radius;
-        & .closeButton{
-            border:none;
-            background: transparent;
-            color:inherit;
-            padding-left:0.5em;
-            flex-shrink:0;
-            cursor:pointer;
+        &.position-top{
+            top: 0;
+            transform: translateX(-50%);
         }
-        & .line{
-            border-left:1px solid #fff;
-            margin-left:0.5em;
+        &.position-middle{
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        &.position-bottom{
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+        & .toast_content {
+            padding: 0.5em 0;
+        }
+
+        & .closeButton {
+            border: none;
+            background: transparent;
+            color: inherit;
+            padding-left: 0.5em;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        & .line {
+            border-left: 1px solid #fff;
+            margin-left: 0.5em;
         }
     }
 </style>
