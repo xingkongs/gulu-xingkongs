@@ -89,6 +89,7 @@
             color:inherit;
             padding-left:0.5em;
             flex-shrink:0;
+            cursor:pointer;
         }
         & .line{
             border-left:1px solid #fff;
