@@ -23,7 +23,7 @@ describe('Toast',()=>{
             toast.$el.remove()
             toast.$destroy()
         })
-        it('接收 closeButton',()=>{
+        it('接收 closeButton',(done)=>{
             const callback = sinon.fake()
             let div = document.createElement('div')
             document.body.appendChild(div)
@@ -37,9 +37,12 @@ describe('Toast',()=>{
                 }
             }).$mount(div)
             const closeElement = toast.$el.querySelector('.closeButton')
-            expect(closeElement.textContent.trim()).to.eq("知道了")
-            closeElement.click()
-            expect(callback).to.have.been.called
+            setTimeout(()=>{
+                expect(closeElement.textContent.trim()).to.eq("知道了")
+                closeElement.click()
+                expect(callback).to.have.been.called
+                done()
+            })
             toast.$el.remove()
             toast.$destroy()
         })
