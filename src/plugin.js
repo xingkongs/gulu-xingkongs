@@ -7,17 +7,25 @@ export default {
             if(currentToast){
                 currentToast.close()
             }
-            currentToast = createToast({Constructor,propsData:toastOptions,message})
+            currentToast = createToast({
+                Constructor,
+                propsData:toastOptions,
+                message,
+                onClose:()=>{
+                    currentToast = null
+                }
+            })
         }
     }
 }
 
-function createToast({Constructor,propsData,message}){
+function createToast({Constructor,propsData,message,onClose}){
     const toast = new Constructor({
         propsData:propsData
     })
     toast.$slots.default = [message]
     toast.$mount()
+    toast.$on('beforeClose',onClose)
     document.body.appendChild(toast.$el)
     return toast
 }
