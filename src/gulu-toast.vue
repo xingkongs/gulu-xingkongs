@@ -1,6 +1,13 @@
 <template>
     <div class="g-toast">
         <slot></slot>
+        <template v-if="closeButton">
+            <div class="line"></div>
+            <div class="closeButton" @click="clickButton">
+                {{closeButton.text}}
+            </div>
+        </template>
+
     </div>
 </template>
 <script>
@@ -14,6 +21,17 @@
             autoCloseDelay:{
                 type:Number,
                 default:3
+            },
+            closeButton:{
+                type:Object,
+                default(){
+                    return {
+                        text:'关闭',
+                        callback:()=>{
+                            this.close()
+                        }
+                    }
+                }
             }
         },
         mounted(){
@@ -27,6 +45,10 @@
             close(){
                 this.$el.remove()
                 this.$destroy()
+            },
+            clickButton(){
+                this.close()
+                this.closeButton.callback()
             }
         }
     }
@@ -47,5 +69,16 @@
         align-items: center;
         text-align: center;
         border-radius: $border-radius;
+        & .closeButton{
+            border:none;
+            background: transparent;
+            color:inherit;
+            padding-left:0.5em;
+        }
+        & .line{
+            height:100%;
+            border-left:1px solid #fff;
+            margin-left:0.5em;
+        }
     }
 </style>
