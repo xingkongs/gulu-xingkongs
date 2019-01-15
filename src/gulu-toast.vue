@@ -5,7 +5,30 @@
 </template>
 <script>
     export default {
-        name: "GuluToast"
+        name: "GuluToast",
+        props:{
+            autoClose:{
+                type:Boolean,
+                default:true
+            },
+            autoCloseDelay:{
+                type:Number,
+                default:3
+            }
+        },
+        mounted(){
+            if(this.autoClose){
+                let timer = setTimeout(()=>{
+                    this.close()
+                },this.autoCloseDelay*1000)
+            }
+        },
+        methods:{
+            close(){
+                this.$el.remove()
+                this.$destroy()
+            }
+        }
     }
 </script>
 <style scoped lang="scss">
