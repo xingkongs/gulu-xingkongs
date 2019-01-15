@@ -27,9 +27,7 @@
                 default(){
                     return {
                         text:'关闭',
-                        callback:()=>{
-                            this.close()
-                        }
+                        callback:undefined
                     }
                 }
             }
@@ -48,7 +46,12 @@
             },
             clickButton(){
                 this.close()
-                this.closeButton.callback()
+                if(this.closeButton && typeof this.closeButton.callback === 'function'){
+                    this.closeButton.callback(this)
+                }
+            },
+            test(){
+                console.log('test')
             }
         }
     }
