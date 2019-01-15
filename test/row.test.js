@@ -31,6 +31,8 @@ describe('Row',()=>{
             expect(getComputedStyle(col[1]).paddingRight).to.eq('10px')
             expect(getComputedStyle(col[1]).paddingLeft).to.eq('10px')
             done()
+            vm.$el.remove()
+            vm.$destroy()
         })
         div.remove()
     })
@@ -45,5 +47,7 @@ describe('Row',()=>{
         }).$mount(div)
         let row = vm.$el
         expect(getComputedStyle(row).justifyContent).to.eq('flex-start');
+        vm.$el.remove()
+        vm.$destroy()
     })
 })

@@ -17,6 +17,8 @@ describe('Col',()=>{
         }).$mount(div)
         const col = vm.$el
        expect(col.classList.contains('col-1')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
     it('接收 offset 属性',()=>{
         const div = document.createElement('div')
@@ -29,6 +31,8 @@ describe('Col',()=>{
         }).$mount(div)
         const col = vm.$el
         expect(col.classList.contains('offset-1')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
     it('接收 ipad 属性',()=>{
         const div = document.createElement('div')
@@ -42,6 +46,8 @@ describe('Col',()=>{
         const col = vm.$el
         expect(col.classList.contains('col-ipad-2')).to.eq(true)
         expect(col.classList.contains('offset-ipad-3')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
     it('接收 narrowPc 属性',()=>{
         const div = document.createElement('div')
@@ -55,6 +61,8 @@ describe('Col',()=>{
         const col = vm.$el
         expect(col.classList.contains('col-narrow-pc-1')).to.eq(true)
         expect(col.classList.contains('offset-narrow-pc-2')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
     it('接收 pc 属性',()=>{
         const div = document.createElement('div')
@@ -68,6 +76,8 @@ describe('Col',()=>{
         const col = vm.$el
         expect(col.classList.contains('col-pc-1')).to.eq(true)
         expect(col.classList.contains('offset-pc-2')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
     it('接收 widePc 属性',()=>{
         const div = document.createElement('div')
@@ -81,5 +91,7 @@ describe('Col',()=>{
         const col = vm.$el
         expect(col.classList.contains('col-wide-pc-4')).to.eq(true)
         expect(col.classList.contains('offset-wide-pc-5')).to.eq(true)
+        vm.$el.remove()
+        vm.$destroy()
     })
 })
