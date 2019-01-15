@@ -41,7 +41,7 @@ new Vue({
             console.log(e)
         },
         showToast(){
-            this.$toast(`信息`,{
+            this.$toast(`信息${parseInt(Math.random()*100)}`,{
                 closeButton:{
                     text:'知道了',
                     callback(toast){

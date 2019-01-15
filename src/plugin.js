@@ -1,15 +1,23 @@
 import Toast from './gulu-toast'
-
+let currentToast
 export default {
-    install(Vue, options) {
+    install(Vue) {
         Vue.prototype.$toast = function (message,toastOptions) {
             const Constructor = Vue.extend(Toast)
-            const toast = new Constructor({
-                propsData:toastOptions
-            })
-            toast.$slots.default = [message]
-            toast.$mount()
-            document.body.appendChild(toast.$el)
+            if(currentToast){
+                currentToast.close()
+            }
+            currentToast = createToast({Constructor,propsData:toastOptions,message})
         }
     }
+}
+
+function createToast({Constructor,propsData,message}){
+    const toast = new Constructor({
+        propsData:propsData
+    })
+    toast.$slots.default = [message]
+    toast.$mount()
+    document.body.appendChild(toast.$el)
+    return toast
 }
