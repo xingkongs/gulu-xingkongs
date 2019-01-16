@@ -12,6 +12,13 @@ import Gulufooter from './layout/footer'
 import Gulusider from './layout/sider'
 import GuluToast from './gulu-toast'
 import plugin from './plugin'
+import GuluTabs from './tabs/gulu-tabs'
+import GuluTabsHead from './tabs/gulu-tabs-head'
+import GuluTabsBody from './tabs/gulu-tabs-body'
+import GuluTabsItem from './tabs/gulu-tabs-item'
+import GuluTabsPane from './tabs/gulu-tabs-pane'
+
+
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -26,6 +33,11 @@ Vue.component('g-footer',Gulufooter)
 Vue.component('g-sider',Gulusider)
 Vue.component('g-toast',GuluToast)
 Vue.use(plugin)
+Vue.component('g-tabs',GuluTabs)
+Vue.component('g-tabs-head',GuluTabsHead)
+Vue.component('g-tabs-body',GuluTabsBody)
+Vue.component('g-tabs-item',GuluTabsItem)
+Vue.component('g-tabs-pane',GuluTabsPane)
 
 new Vue({
     el: "#app",
@@ -33,7 +45,8 @@ new Vue({
         loading1: false,
         loading2: false,
         loading3: false,
-        message:"xxx"
+        message:"xxx",
+        selectTabs:'sports'
 
     },
     methods: {
