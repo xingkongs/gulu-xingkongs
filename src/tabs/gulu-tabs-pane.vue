@@ -1,5 +1,6 @@
 <template>
-    <div class="g-tabs-pane" @click="clickPane" :class="classes" v-if="active">
+    <div class="g-tabs-pane" @click="clickPane" :class="classes" v-if="active"
+    :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -23,7 +24,12 @@
         mounted() {
             this.eventBus.$on('update:selected', (name) => {
                 this.active = name === this.name;
+                // console.log("name");
+                // console.log(name);
+                // console.log("this.name")
+                // console.log(this.name)
             })
+
         },
         props: {
             name: {

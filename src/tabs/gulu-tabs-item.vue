@@ -1,5 +1,6 @@
 <template>
-    <div class="g-tabs-item" @click="clickItem" :class="classes">
+    <div class="g-tabs-item" @click="clickItem" :class="classes"
+    :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -32,14 +33,15 @@
             }
         },
         mounted(){
-            this.eventBus.$on('update:selected',(name,vm)=>{
+            this.eventBus && this.eventBus.$on('update:selected',(name,vm)=>{
                 this.active = name === this.name;
             })
         },
         methods:{
             clickItem(){
                 if(this.disabled){return}
-                this.eventBus.$emit('update:selected',this.name,this)
+                this.eventBus && this.eventBus.$emit('update:selected',this.name,this)
+                this.$emit('click',this)
             }
         }
     }

@@ -31,7 +31,7 @@
                     vm.$children.map(childVm=>{
                         if(childVm.$options.name === "GuluTabsItem"
                             && childVm.name === this.selected){ //props.name
-                            console.log(childVm.$el);
+                            //console.log(childVm.$el);
                             this.eventBus.$emit('update:selected',this.selected,childVm)
                         }
                     })
