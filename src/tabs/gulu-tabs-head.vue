@@ -2,7 +2,7 @@
     <div class="g-tabs-head">
         <slot></slot>
         <div class="line" ref="line"></div>
-        <div class="actions">
+        <div class="actionsWrapper">
             <slot name="actions"></slot>
         </div>
     </div>
@@ -25,7 +25,7 @@
 <style scoped lang="scss">
     .g-tabs-head{
         display:flex;
-        border:1px solid #eee;
+        border-bottom:1px solid #eee;
         position: relative;
         & .line{
             position: absolute;
@@ -34,8 +34,11 @@
             border:1px solid blue;
             transition:all 200ms ease-in;
         }
-        & .actions{
+        & .actionsWrapper{
             margin-left:auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 </style>
