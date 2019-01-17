@@ -15,15 +15,17 @@
             }
         },
         mounted(){
-            // console.log('爷爷给item的eventBus')
-            // console.log(this.eventBus);
-            this.eventBus.$on('update:select',name=>{
-                console.log(name);
+            this.eventBus.$on('update:selected',name=>{
+                if(name === this.name){
+                    console.log(`${this.name}被选中了`)
+                }else{
+                    console.log(`${this.name}没有被选中`)
+                }
             })
         },
         methods:{
             clickItem(){
-                this.eventBus.$emit('update:select',this.name)
+                this.eventBus.$emit('update:selected',this.name)
             }
         }
     }

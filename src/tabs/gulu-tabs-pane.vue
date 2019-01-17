@@ -9,21 +9,18 @@
         name: "GuluTabsPane",
         inject:['eventBus'],
         mounted(){
-            // console.log('爷爷给pane的eventBus')
-            // console.log(this.eventBus);
-            this.eventBus.$on('update:select',name=>{
-                console.log(name);
+            this.eventBus.$on('update:selected',name=>{
             })
         },
         props:{
           name:{
-              type:[String,Number],
+              type:String,
               required:true
           }
         },
         methods:{
             clickPane(){
-                this.eventBus.$emit('update:select',this.name)
+                this.eventBus.$emit('update:selected',this.name)
             }
         }
     }
