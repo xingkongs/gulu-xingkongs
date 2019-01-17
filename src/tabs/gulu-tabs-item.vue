@@ -17,12 +17,17 @@
             name:{
                 type:[String,Number],
                 required:true
+            },
+            disabled:{
+                type:Boolean,
+                default:false
             }
         },
         computed:{
             classes(){
                return {
-                   active:this.active
+                   active:this.active,
+                   disabled:this.disabled
                }
             }
         },
@@ -33,6 +38,7 @@
         },
         methods:{
             clickItem(){
+                if(this.disabled){return}
                 this.eventBus.$emit('update:selected',this.name,this)
             }
         }
@@ -45,8 +51,13 @@
         height: $height;
         padding:0 2em;
         cursor: pointer;
+        user-select:none;
         &.active{
-            color:blue;
+            color:$tabs-active-text;
+        }
+        &.disabled{
+            color:$tabs-disabled-text;
+            cursor:default;
         }
     }
 </style>
