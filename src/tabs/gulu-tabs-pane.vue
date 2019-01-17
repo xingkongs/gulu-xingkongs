@@ -42,7 +42,6 @@
 <style scoped lang="scss">
     .g-tabs-pane {
         &.active{
-            background: red;
         }
     }
 </style>

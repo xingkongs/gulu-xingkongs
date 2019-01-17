@@ -1,8 +1,9 @@
 <template>
     <div class="g-tabs-head">
         <slot></slot>
+        <div class="line" ref="line"></div>
         <div class="actions">
-        <slot name="actions"></slot>
+            <slot name="actions"></slot>
         </div>
     </div>
 </template>
@@ -13,7 +14,9 @@
         inject:['eventBus'],
         mounted(){
             this.eventBus.$on('update:selected',(name,item)=>{
-                console.log(name,item);
+                let {width,height,left,top} = item.$el.getBoundingClientRect()
+                this.$refs.line.style.width = `${width}px`
+                this.$refs.line.style.left = `${left}px`
             })
         }
     }
@@ -23,6 +26,14 @@
     .g-tabs-head{
         display:flex;
         border:1px solid #eee;
+        position: relative;
+        & .line{
+            position: absolute;
+            bottom:0;
+            width:100px;
+            border:1px solid blue;
+            transition:all 200ms ease-in;
+        }
         & .actions{
             margin-left:auto;
         }

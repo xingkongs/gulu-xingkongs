@@ -40,10 +40,13 @@
 </script>
 
 <style scoped lang="scss">
+    @import '../style/var';
     .g-tabs-item{
+        height: $height;
         padding:0 2em;
+        cursor: pointer;
         &.active{
-            background: red;
+            color:blue;
         }
     }
 </style>
