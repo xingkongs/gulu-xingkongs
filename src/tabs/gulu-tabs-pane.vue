@@ -8,8 +8,18 @@
     export default {
         name: "GuluTabsPane",
         inject:['eventBus'],
+        data(){
+          return {
+              active:false
+          }
+        },
         mounted(){
             this.eventBus.$on('update:selected',name=>{
+                if(name === this.name){
+                    console.log(`pane ${this.name}被选中了`)
+                }else{
+                    console.log(`pane${this.name}没有被选中`)
+                }
             })
         },
         props:{

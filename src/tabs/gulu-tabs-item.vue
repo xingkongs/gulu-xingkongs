@@ -8,6 +8,11 @@
     export default {
         name: "GuluTabsItem",
         inject:['eventBus'],
+        data(){
+          return {
+              active:false
+          }
+        },
         props:{
             name:{
                 type:[String,Number],
