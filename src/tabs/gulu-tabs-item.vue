@@ -1,5 +1,5 @@
 <template>
-    <div class="g-tabs-item" @click="clickItem">
+    <div class="g-tabs-item" @click="clickItem" :class="classes">
         <slot></slot>
     </div>
 </template>
@@ -19,13 +19,16 @@
                 required:true
             }
         },
+        computed:{
+            classes(){
+               return {
+                   active:this.active
+               }
+            }
+        },
         mounted(){
             this.eventBus.$on('update:selected',name=>{
-                if(name === this.name){
-                    console.log(`${this.name}被选中了`)
-                }else{
-                    console.log(`${this.name}没有被选中`)
-                }
+                this.active = name === this.name;
             })
         },
         methods:{
@@ -38,6 +41,9 @@
 
 <style scoped lang="scss">
     .g-tabs-item{
-
+        padding:0 2em;
+        &.active{
+            background: red;
+        }
     }
 </style>

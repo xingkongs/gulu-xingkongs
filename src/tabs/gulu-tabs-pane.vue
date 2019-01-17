@@ -1,5 +1,5 @@
 <template>
-    <div class="g-tabs-pane" @click="clickPane">
+    <div class="g-tabs-pane" @click="clickPane" :class="classes" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -7,37 +7,42 @@
 <script>
     export default {
         name: "GuluTabsPane",
-        inject:['eventBus'],
-        data(){
-          return {
-              active:false
-          }
+        inject: ['eventBus'],
+        data() {
+            return {
+                active: false
+            }
         },
-        mounted(){
-            this.eventBus.$on('update:selected',name=>{
-                if(name === this.name){
-                    console.log(`pane ${this.name}被选中了`)
-                }else{
-                    console.log(`pane${this.name}没有被选中`)
+        computed:{
+            classes(){
+                return {
+                    active:this.active
                 }
+            }
+        },
+        mounted() {
+            this.eventBus.$on('update:selected', name => {
+                this.active = name === this.name;
             })
         },
-        props:{
-          name:{
-              type:String,
-              required:true
-          }
+        props: {
+            name: {
+                type: String,
+                required: true
+            }
         },
-        methods:{
-            clickPane(){
-                this.eventBus.$emit('update:selected',this.name)
+        methods: {
+            clickPane() {
+                this.eventBus.$emit('update:selected', this.name)
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .g-tabs-pane{
-
+    .g-tabs-pane {
+        &.active{
+            background: red;
+        }
     }
 </style>
