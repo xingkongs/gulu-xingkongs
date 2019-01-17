@@ -6,7 +6,12 @@
 
 <script>
     export default {
-        name: "GuluTabsBody"
+        name: "GuluTabsBody",
+        inject:['eventBus'],
+        mounted(){
+            // console.log('爷爷给body的eventBus')
+            // console.log(this.eventBus);
+        }
     }
 </script>
 

@@ -7,7 +7,12 @@
 
 <script>
     export default {
-        name: "GuluTabsHead"
+        name: "GuluTabsHead",
+        inject:['eventBus'],
+        mounted(){
+            // console.log('爷爷给head的eventBus')
+            // console.log(this.eventBus);
+        }
     }
 </script>
 

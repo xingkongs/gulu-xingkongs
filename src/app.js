@@ -48,6 +48,9 @@ new Vue({
 
     },
     methods: {
+        yyy(message){
+            console.log(message);
+        },
         inputChange(e){
             console.log(e)
         },
