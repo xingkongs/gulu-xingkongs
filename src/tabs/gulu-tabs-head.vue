@@ -12,7 +12,9 @@
         name: "GuluTabsHead",
         inject:['eventBus'],
         mounted(){
-
+            this.eventBus.$on('update:selected',(name,item)=>{
+                console.log(name,item);
+            })
         }
     }
 </script>
