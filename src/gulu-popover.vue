@@ -63,18 +63,40 @@
 </script>
 
 <style scoped lang="scss">
+    @import "./style/var";
     .g-popover {
         display: inline-block;
         vertical-align: top;
         position: relative;
-
     }
-
     .content--wrapper {
+        max-width:20em;
+        word-break: break-word;
         position: absolute;
         top: 0;
         left: 0;
-        border: 1px solid red;
+        border: 1px solid #333;
+        background: #fff;
+        filter:drop-shadow(0 1px 1px rgba(0,0,0,0.75));
         transform: translateY(-100%);
+        margin-top:-15px;
+        padding:0.5em 1em;
+        border-radius:$border-radius ;
+        &::before,&::after{
+            content:'';
+            width:0;
+            height:0;
+            position: absolute;
+            border:10px solid transparent;
+            left:10px;
+        }
+        &::before{
+            top:100%;
+            border-top-color:#000;
+        }
+        &::after{
+            top:calc(100% - 1px);
+            border-top-color:#fff;
+        }
     }
 </style>
