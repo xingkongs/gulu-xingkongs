@@ -27,29 +27,31 @@
                 this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
                 this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
             },
-            listenToDocument() {
-                let eventHandle = (e) => {
-                    if (!(this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target))) {
-                        this.visible = false
-                        document.removeEventListener('click', eventHandle)
-                    }
+            onClickDocument(e){
+                if (!(this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target))) {
+                    this.close()
                 }
-                document.addEventListener('click', eventHandle)
             },
-            onShow() {
+            open() {
+                this.visible = true
                 this.$nextTick(() => {
                     this.positionContent()
-                    this.listenToDocument()
+                    document.addEventListener('click', this.onClickDocument)
                 })
             },
+            close(){
+                this.visible = false
+                console.log('关闭');
+                document.removeEventListener('click', this.onClickDocument)
+            },
             clickPopover(event) {
-                this.$emit('click', this)
-                console.log(event.target);
+                this.$emit('click', this);
                 if (this.$refs.triggerWrapper.contains(event.target)) {
                     console.log('按钮');
-                    this.visible = !this.visible
                     if (this.visible === true) {
-                        this.onShow()
+                        this.close()
+                    }else{
+                        this.open()
                     }
                 }
             },
