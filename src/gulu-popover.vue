@@ -29,7 +29,6 @@
             },
             listenToDocument() {
                 let eventHandle = (e) => {
-                    //如果你点的不是弹层 我就把弹层关掉 并删除监听
                     if (!this.$refs.contentWrapper.contains(e.target)) {
                         this.visible = false
                         document.removeEventListener('click', eventHandle)
@@ -39,25 +38,20 @@
             },
             onShow() {
                 this.$nextTick(() => {
-                    //定位弹层
                     this.positionContent()
-                    //监听document
                     this.listenToDocument()
                 })
             },
             clickPopover(event) {
                 this.$emit('click', this)
                 console.log(event.target);
-                //如果你点击按钮 或者按钮里面的东西 我就切换popover状态
                 if (this.$refs.triggerWrapper.contains(event.target)) {
                     console.log('按钮');
                     this.visible = !this.visible
-                    //如果你是打开状态
                     if (this.visible === true) {
                         this.onShow()
                     }
                 }
-
             },
             clickContent() {
                 console.log('yyy');
