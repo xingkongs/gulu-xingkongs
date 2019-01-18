@@ -29,7 +29,7 @@
             },
             listenToDocument() {
                 let eventHandle = (e) => {
-                    if (!this.$refs.contentWrapper.contains(e.target)) {
+                    if (!(this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target))) {
                         this.visible = false
                         document.removeEventListener('click', eventHandle)
                     }
