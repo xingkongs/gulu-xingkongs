@@ -21,32 +21,41 @@
 
         },
         methods: {
+            positionContent() {
+                document.body.appendChild(this.$refs.contentWrapper)
+                let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+                this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+            },
+            listenToDocument() {
+                let eventHandle = (e) => {
+                    //如果你点的不是弹层 我就把弹层关掉 并删除监听
+                    if (!this.$refs.contentWrapper.contains(e.target)) {
+                        this.visible = false
+                        document.removeEventListener('click', eventHandle)
+                    }
+                }
+                document.addEventListener('click', eventHandle)
+            },
+            onShow() {
+                this.$nextTick(() => {
+                    //定位弹层
+                    this.positionContent()
+                    //监听document
+                    this.listenToDocument()
+                })
+            },
             clickPopover(event) {
-                this.$emit('click',this)
+                this.$emit('click', this)
                 console.log(event.target);
-                if(this.$refs.triggerWrapper.contains(event.target)){
+                //如果你点击按钮 或者按钮里面的东西 我就切换popover状态
+                if (this.$refs.triggerWrapper.contains(event.target)) {
                     console.log('按钮');
                     this.visible = !this.visible
+                    //如果你是打开状态
                     if (this.visible === true) {
-                        this.$nextTick(() => {
-                            document.body.appendChild(this.$refs.contentWrapper)
-                            let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
-                            this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-                            this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-                            let eventHandle = (e) => {
-                                if(!this.$refs.contentWrapper.contains(e.target)){
-                                    if (this.visible === true) {
-                                        this.visible = false
-                                        document.removeEventListener('click', eventHandle)
-                                    }
-                                }
-                            }
-                            document.addEventListener('click', eventHandle)
-                        })
-                    } else {
+                        this.onShow()
                     }
-                }else{
-                    console.log('其他');
                 }
 
             },
@@ -70,6 +79,6 @@
         top: 0;
         left: 0;
         border: 1px solid red;
-        transform:translateY(-100%);
+        transform: translateY(-100%);
     }
 </style>
