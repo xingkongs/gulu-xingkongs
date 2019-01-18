@@ -1,5 +1,5 @@
 <template>
-    <div class="g-popover" @click.stop="clickPopover">
+    <div class="g-popover" @click="clickPopover">
         <div ref="contentWrapper" class="content--wrapper" v-if="visible" @click="clickContent">
             <slot name="content"></slot>
         </div>
@@ -21,25 +21,34 @@
 
         },
         methods: {
-            clickPopover() {
-                this.visible = !this.visible
-                if (this.visible === true) {
-                    this.$nextTick(() => {
-                        document.body.appendChild(this.$refs.contentWrapper)
-                        let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
-                        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-                        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-                        //这里的top 只是 元素浏览器可视范围顶部距离 需要加浏览器滚动高度
-                        let eventHandle = () => {
-                            if (this.visible === true) {
-                                this.visible = false
-                                document.removeEventListener('click', eventHandle)
+            clickPopover(event) {
+                this.$emit('click',this)
+                console.log(event.target);
+                if(this.$refs.triggerWrapper.contains(event.target)){
+                    console.log('按钮');
+                    this.visible = !this.visible
+                    if (this.visible === true) {
+                        this.$nextTick(() => {
+                            document.body.appendChild(this.$refs.contentWrapper)
+                            let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                            this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+                            this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+                            let eventHandle = (e) => {
+                                if(!this.$refs.contentWrapper.contains(e.target)){
+                                    if (this.visible === true) {
+                                        this.visible = false
+                                        document.removeEventListener('click', eventHandle)
+                                    }
+                                }
                             }
-                        }
-                        document.addEventListener('click', eventHandle)
-                    })
-                } else {
+                            document.addEventListener('click', eventHandle)
+                        })
+                    } else {
+                    }
+                }else{
+                    console.log('其他');
                 }
+
             },
             clickContent() {
                 console.log('yyy');
