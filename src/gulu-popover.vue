@@ -27,8 +27,9 @@
                     this.$nextTick(() => {
                         document.body.appendChild(this.$refs.contentWrapper)
                         let {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect()
-                        this.$refs.contentWrapper.style.left = left + 'px'
-                        this.$refs.contentWrapper.style.top = top + 'px'
+                        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+                        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+                        //这里的top 只是 元素浏览器可视范围顶部距离 需要加浏览器滚动高度
                         let eventHandle = () => {
                             if (this.visible === true) {
                                 this.visible = false
@@ -56,7 +57,7 @@
     }
 
     .content--wrapper {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         border: 1px solid red;
