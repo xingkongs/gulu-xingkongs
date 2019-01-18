@@ -165,11 +165,13 @@
             &::before {
                 top: 100%;
                 border-top-color: #000;
+                border-bottom:none;
                 left: 10px;
             }
             &::after {
                 top: calc(100% - 1px);
                 border-top-color: #fff;
+                border-bottom:none;
                 left: 10px;
             }
         }
@@ -179,11 +181,13 @@
                 bottom: 100%;
                 left: 10px;
                 border-bottom-color: #000;
+                border-top:none;
             }
             &::after {
                 left: 10px;
                 bottom: calc(100% - 1px);
                 border-bottom-color: #fff;
+                border-top:none;
             }
         }
         &.position-left {
@@ -192,6 +196,7 @@
             &::before, &::after {
                 top: 50%;
                 transform: translateY(-50%);
+                border-right:none;
             }
             &::before {
                 left: 100%;
@@ -207,6 +212,7 @@
             &::before, &::after {
                 top: 50%;
                 transform: translateY(-50%);
+                border-left:none;
             }
             &::before {
                 right: 100%;
