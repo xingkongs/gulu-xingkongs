@@ -1,5 +1,5 @@
 <template>
-    <div class="g-popover" @click="clickPopover">
+    <div class="g-popover" ref="popover">
         <div ref="contentWrapper" class="content--wrapper" v-if="visible" @click="clickContent"
              :class="{[`position-${position}`]:true}">
             <slot name="content"></slot>
@@ -28,7 +28,7 @@
             }
         },
         mounted() {
-
+            this.$refs.popover.addEventListener('click',this.clickPopover)
         },
         methods: {
             positionContent() {
@@ -58,9 +58,14 @@
                 contentWrapper.style.top = positions[this.position].top + 'px'
             },
             onClickDocument(e) {
-                if (!(this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target))) {
-                    this.close()
+                if (this.$refs.popover && this.$refs.popover.contains(e.target)) {
+                    return
                 }
+                if (this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target)) {
+                    return
+                }
+                this.close()
+                console.log('document close');
             },
             open() {
                 this.visible = true
