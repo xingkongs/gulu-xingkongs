@@ -25,10 +25,46 @@
                 validator(value) {
                     return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
                 }
+            },
+            trigger: {
+                type: String,
+                default: 'click',
+                validator(value) {
+                    return ['click', 'hover'].indexOf(value) >= 0
+                }
             }
         },
         mounted() {
-            this.$refs.popover.addEventListener('click',this.clickPopover)
+            if (this.trigger === 'click') {
+                this.$refs.popover.addEventListener('click', this.clickPopover)
+            } else {
+                this.$refs.popover.addEventListener('mouseenter', this.open)
+                this.$refs.popover.addEventListener('mouseleave', this.close)
+            }
+        },
+        destroyed(){
+            if (this.trigger === 'click') {
+                this.$refs.popover.removeEventListener('click', this.clickPopover)
+            } else {
+                this.$refs.popover.removeEventListener('mouseenter', this.open)
+                this.$refs.popover.removeEventListener('mouseleave', this.close)
+            }
+        },
+        computed: {
+            openEvent() {
+                if (this.trigger === 'click') {
+                    return 'click'
+                } else {
+                    return 'mouseenter'
+                }
+            },
+            closeEvent() {
+                if (this.trigger === 'click') {
+                    return 'click'
+                } else {
+                    return 'mouseleave'
+                }
+            }
         },
         methods: {
             positionContent() {
@@ -83,6 +119,7 @@
                 if (this.$refs.triggerWrapper.contains(event.target)) {
                     if (this.visible === true) {
                         this.close()
+                        console.log('popover close');
                     } else {
                         this.open()
                     }
