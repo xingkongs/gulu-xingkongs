@@ -17,31 +17,19 @@
         }
 
         .box {
-            margin: 20px;
-            background: #ccc;
+            margin: 200px;
         }
     </style>
 </head>
 <body>
 <div id="app">
-    <g-tabs :selected.sync="selectedTab" @update:selected="yyy">
-        <g-tabs-head>
-            <template slot="actions">
-                <g-button>设置</g-button>
-            </template>
-            <g-tabs-item name="women">
-                <g-icon name="thumbs-up"></g-icon>
-                美女
-            </g-tabs-item>
-            <g-tabs-item name="finance" disabled>财经</g-tabs-item>
-            <g-tabs-item name="sports">体育</g-tabs-item>
-        </g-tabs-head>
-        <g-tabs-body>
-            <g-tabs-pane name="women">美女相关资讯</g-tabs-pane>
-            <g-tabs-pane name="finance">财经相关资讯</g-tabs-pane>
-            <g-tabs-pane name="sports">体育相关资讯</g-tabs-pane>
-        </g-tabs-body>
-    </g-tabs>
+    <div class="box">
+        <g-popover>
+            <template slot="content">popover</template>
+            <button>点我</button>
+        </g-popover>
+    </div>
+
 </div>
 <div id="test"></div>
 <script src="./src/app.js"></script>
