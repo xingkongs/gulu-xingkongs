@@ -101,7 +101,6 @@
                     return
                 }
                 this.close()
-                console.log('document close');
             },
             open() {
                 this.visible = true
@@ -119,14 +118,12 @@
                 if (this.$refs.triggerWrapper.contains(event.target)) {
                     if (this.visible === true) {
                         this.close()
-                        console.log('popover close');
                     } else {
                         this.open()
                     }
                 }
             },
             clickContent() {
-                console.log('yyy');
             }
         }
     }
