@@ -6,16 +6,30 @@ import Popover from '../src/gulu-popover'
 Vue.config.devtools = false
 Vue.config.productionTip = false
 
-describe('Popover',()=> {
+describe('Popover', () => {
     it('Popover 存在', () => {
         expect(Popover).to.exist
     })
-    describe('props',()=>{
-        it('接受 position 属性',()=>{
-
+    describe('props', (done) => {
+        xit('接受 position 属性', () => {
+            const div = document.createElement('div')
+            document.body.appendChild(div)
+            div.innerHTML = `
+            <g-popover position="bottom" ref="pop">
+                <template slot="content">popover</template>
+                <button>点我</button>
+            </g-popover>
+            `
         })
-        it('接受 trigger 属性',()=>{
-            
+        let vm = new Vue({
+            el: div
+        })
+        vm.$nextTick(() => {
+            console.log(vm.$refs);
+            done()
+        })
+        it('接受 trigger 属性', () => {
+
         })
     })
 })
