@@ -39,7 +39,6 @@
         },
         methods: {
             clickPane() {
-                this.eventBus.$emit('update:selected', this.name)
             }
         }
     }

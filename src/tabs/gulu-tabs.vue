@@ -32,7 +32,7 @@
                         if(childVm.$options.name === "GuluTabsItem"
                             && childVm.name === this.selected){ //props.name
                             //console.log(childVm.$el);
-                            this.eventBus.$emit('update:selected',this.selected,childVm)
+                            this.eventBus && this.eventBus.$emit('update:selected',this.selected,childVm)
                         }
                     })
                 }
