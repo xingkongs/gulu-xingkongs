@@ -1,3 +1,5 @@
 # button
 
-<button-demo></button-demo>
+<ClientOnly>
+  <button-demo/>
+</ClientOnly>
