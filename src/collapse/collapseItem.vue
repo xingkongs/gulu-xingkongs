@@ -14,7 +14,8 @@
         name: "GuluCollapseItem",
         data(){
           return {
-              visible:false
+              visible:false,
+              single:false
           }
         },
         props:{
@@ -31,7 +32,9 @@
         mounted(){
             this.eventBus && this.eventBus.$on('update:selected',name=>{
                 if(name !== this.name){
-                    this.close()
+                    if(this.single){
+                        this.close()
+                    }
                 }else{
                     this.open()
                 }
