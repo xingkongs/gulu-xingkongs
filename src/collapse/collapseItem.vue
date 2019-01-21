@@ -21,13 +21,19 @@
             title:{
                 type:String,
                 required:true
+            },
+            name:{
+                type:String,
+                required:true
             }
         },
         inject:['eventBus'],
         mounted(){
-            this.eventBus && this.eventBus.$on('updata:selected',vm=>{
-                if(vm !== this){
+            this.eventBus && this.eventBus.$on('update:selected',name=>{
+                if(name !== this.name){
                     this.close()
+                }else{
+                    this.open()
                 }
             })
         },
@@ -36,12 +42,14 @@
                 if(this.visible === true){
                     this.visible = false
                 }else{
-                    this.visible = true
-                    this.eventBus && this.eventBus.$emit('updata:selected',this)
+                    this.eventBus && this.eventBus.$emit('update:selected',this.name)
                 }
             },
             close(){
                 this.visible = false
+            },
+            open(){
+                this.visible = true
             }
         }
     }
@@ -57,6 +65,7 @@
             margin-top:-1px;
             user-select: none;
             cursor: pointer;
+            background: $button-active-bg;
         }
         &:first-child .title{
             border-top-left-radius:$border-radius;
