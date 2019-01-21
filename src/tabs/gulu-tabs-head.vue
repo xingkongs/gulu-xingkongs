@@ -13,7 +13,7 @@
         name: "GuluTabsHead",
         inject:['eventBus'],
         mounted(){
-            this.eventBus.$on('update:selected',(name,item)=>{
+            this.eventBus && this.eventBus.$on('update:selected',(name,item)=>{
                 let {width,height,left,top} = item.$el.getBoundingClientRect()
                 this.$refs.line.style.width = `${width}px`
                 this.$refs.line.style.left = `${left}px`
