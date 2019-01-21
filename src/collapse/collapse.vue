@@ -20,7 +20,7 @@
                 default: false
             },
             selected: {
-                type: String
+                type: Array
             }
         },
         provide() {
@@ -30,13 +30,33 @@
 
         },
         mounted(){
-            console.log(this.single);
+            //初始化
             this.eventBus.$emit('update:selected',this.selected)
-            this.eventBus.$on('update:selected',name=>{
-                this.$emit('update:selected',name)
-            });
-            this.$children.forEach((vm)=>{
-                vm.single = this.single
+            //新增
+            this.eventBus.$on('update:addSelected',names=>{
+                //拷贝selected
+                let selectedCopy = JSON.parse(JSON.stringify(this.selected))
+                if(this.single){
+                    selectedCopy = [names]
+                }else{
+                    selectedCopy.push(names)
+                }
+                //eventbus 中触发 新增后的 selectedCopy
+                this.eventBus.$emit('update:selected',selectedCopy)
+                //更新外部selected
+                this.$emit('update:selected',selectedCopy)
+            })
+            //删除
+            this.eventBus.$on('update:removeSelected',names=>{
+                //拷贝
+                let selectedCopy = JSON.parse(JSON.stringify(this.selected))
+                //操作拷贝数据
+                let index = selectedCopy.indexOf(names)
+                selectedCopy.splice(index,1)
+                //触发event bus
+                this.eventBus.$emit('update:selected',selectedCopy)
+                //更新到外部
+                this.$emit('update:selected',selectedCopy)
             })
         }
     }
