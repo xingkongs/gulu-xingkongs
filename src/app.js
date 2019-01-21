@@ -50,7 +50,7 @@ new Vue({
         loading2: false,
         loading3: false,
         message:"xxx",
-        selectedTab:"sports"
+        selectedTab:"2",
 
     },
     methods: {
