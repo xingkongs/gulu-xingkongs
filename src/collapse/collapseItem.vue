@@ -30,17 +30,14 @@
         inject: ['eventBus'],
         mounted() {
             this.eventBus && this.eventBus.$on('update:selected', names => {
-                //如果返回的names中包含this.name 就显示
                 this.visible = names.indexOf(this.name) >= 0;
             })
         },
         methods: {
             toggle() {
                 if (this.visible === true) {
-                    //如果要关闭
                     this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
                 } else {
-                    //如果要打开
                     this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
                 }
             }
