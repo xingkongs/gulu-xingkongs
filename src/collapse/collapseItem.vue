@@ -1,6 +1,6 @@
 <template>
     <div class="g-collapse-item">
-        <div class="title" @click="visible = ! visible">
+        <div class="title" @click="toggle">
             {{title}}
         </div>
         <div class="content" v-if="visible">
@@ -21,6 +21,27 @@
             title:{
                 type:String,
                 required:true
+            }
+        },
+        inject:['eventBus'],
+        mounted(){
+            this.eventBus.$on('updata:selected',vm=>{
+                if(vm !== this){
+                    this.close()
+                }
+            })
+        },
+        methods:{
+            toggle(){
+                if(this.visible === true){
+                    this.visible = false
+                }else{
+                    this.visible = true
+                    this.eventBus.$emit('updata:selected',this)
+                }
+            },
+            close(){
+                this.visible = false
             }
         }
     }
