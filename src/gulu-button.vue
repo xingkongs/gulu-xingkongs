@@ -59,6 +59,7 @@
 
         > .content {
             order: 2;
+            padding:0;
         }
 
         > .icon {

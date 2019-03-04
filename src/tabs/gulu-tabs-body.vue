@@ -6,12 +6,14 @@
 
 <script>
     export default {
-        name: "GuluTabsBody"
+        name: "GuluTabsBody",
+        inject:['eventBus'],
+        mounted(){
+        }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .g-tabs-body{
-
     }
 </style>

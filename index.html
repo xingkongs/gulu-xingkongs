@@ -15,32 +15,23 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         .box {
-            margin: 20px;
-            background: #ccc;
+            margin: 50px 200px 80px;
+            overflow: hidden;
+            padding:2px;
         }
     </style>
 </head>
 <body>
 <div id="app">
-    <g-tabs :selected.sync="selectTabs">
-        <g-tabs-head>
-            <template slot="actions">
-                <button>设置</button>
-            </template>
-            <g-tabs-item name="woman">
-                <g-icon name="settings"></g-icon>美女
-            </g-tabs-item>
-            <g-tabs-item name="finance">财经</g-tabs-item>
-            <g-tabs-item name="sports">体育</g-tabs-item>
-        </g-tabs-head>
-        <g-tabs-body>
-            <g-tabs-pane name="woman">美女新闻资讯</g-tabs-pane>
-            <g-tabs-pane name="finance">财经新闻资讯</g-tabs-pane>
-            <g-tabs-pane name="sports">体育新闻资讯</g-tabs-pane>
-        </g-tabs-body>
-    </g-tabs>
+    <div class="box">
+        <g-collapse single :selected.sync="selectedTab">
+            <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
+            <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
+            <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
+        </g-collapse>
+        {{selectedTab}}
+    </div>
 </div>
 <div id="test"></div>
 <script src="./src/app.js"></script>

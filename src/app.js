@@ -17,8 +17,9 @@ import GuluTabsHead from './tabs/gulu-tabs-head'
 import GuluTabsBody from './tabs/gulu-tabs-body'
 import GuluTabsItem from './tabs/gulu-tabs-item'
 import GuluTabsPane from './tabs/gulu-tabs-pane'
-
-
+import GuluPopover from './gulu-popover'
+import GuluCollapse from './collapse/collapse'
+import GuluCollapseItem from './collapse/collapseItem'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -38,6 +39,9 @@ Vue.component('g-tabs-head',GuluTabsHead)
 Vue.component('g-tabs-body',GuluTabsBody)
 Vue.component('g-tabs-item',GuluTabsItem)
 Vue.component('g-tabs-pane',GuluTabsPane)
+Vue.component('g-popover',GuluPopover)
+Vue.component('g-collapse',GuluCollapse)
+Vue.component('g-collapse-item',GuluCollapseItem)
 
 new Vue({
     el: "#app",
@@ -46,10 +50,13 @@ new Vue({
         loading2: false,
         loading3: false,
         message:"xxx",
-        selectTabs:'sports'
+        selectedTab:['2'],
 
     },
     methods: {
+        yyy(message){
+            console.log(message);
+        },
         inputChange(e){
             console.log(e)
         },
