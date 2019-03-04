@@ -1,6 +1,6 @@
 <template>
     <div class="g-tabs-pane" @click="clickPane" :class="classes" v-if="active"
-    :data-name="name">
+            :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -29,7 +29,6 @@
                 // console.log("this.name")
                 // console.log(this.name)
             })
-
         },
         props: {
             name: {

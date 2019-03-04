@@ -14,10 +14,10 @@
             }
         },
         props:{
-          selected:{
-              type:String,
-              required:true
-          }
+            selected:{
+                type:String,
+                required:true
+            }
         },
         provide(){
             return {
@@ -37,13 +37,11 @@
                     })
                 }
             })
-
         }
     }
 </script>
 
 <style scoped lang="scss">
     .g-tabs{
-
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="g-tabs-item" @click="clickItem" :class="classes"
-    :data-name="name">
+            :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -10,9 +10,9 @@
         name: "GuluTabsItem",
         inject:['eventBus'],
         data(){
-          return {
-              active:false
-          }
+            return {
+                active:false
+            }
         },
         props:{
             name:{
@@ -26,10 +26,10 @@
         },
         computed:{
             classes(){
-               return {
-                   active:this.active,
-                   disabled:this.disabled
-               }
+                return {
+                    active:this.active,
+                    disabled:this.disabled
+                }
             }
         },
         mounted(){

@@ -9,13 +9,11 @@
         name: "GuluTabsBody",
         inject:['eventBus'],
         mounted(){
-
         }
     }
 </script>
 
 <style scoped lang="scss">
     .g-tabs-body{
-
     }
 </style>
