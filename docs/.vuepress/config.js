@@ -10,13 +10,6 @@ module.exports = {
         ],
         sidebar: [
             {
-                title: '入门',
-                children: [
-                    ['/install/','安装'],
-                    ['/quick-start/', '快速开始'],
-                ]
-            },
-            {
                 title: '组件',
                 children: [
                     '/components/button/'
