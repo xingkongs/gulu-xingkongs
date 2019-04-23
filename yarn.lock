@@ -747,9 +747,9 @@
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
 "@types/node@*":
-  version "11.13.6"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.13.6.tgz#37ec75690830acb0d74ce3c6c43caab787081e85"
-  integrity sha1-N+x1aQgwrLDXTOPGxDyqt4cIHoU=
+  version "11.13.7"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-11.13.7.tgz#85dbb71c510442d00c0631f99dae957ce44fd104"
+  integrity sha1-hdu3HFEEQtAMBjH5na6VfORP0QQ=
 
 "@types/q@^1.5.1":
   version "1.5.2"
@@ -843,7 +843,7 @@
   resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.6.0.tgz#56421093f5ff90b2e4015b4bdc71180250e9211e"
   integrity sha1-VkIQk/X/kLLkAVtL3HEYAlDpIR4=
 
-"@vue/cli-plugin-babel@^3.4.1":
+"@vue/cli-plugin-babel@^3.6.3":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.6.0.tgz#7863fca0151a60a7c9af9517b0537cc9a1420e64"
   integrity sha1-eGP8oBUaYKfJr5UXsFN8yaFCDmQ=
@@ -854,7 +854,7 @@
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
 
-"@vue/cli-plugin-unit-mocha@^3.4.1":
+"@vue/cli-plugin-unit-mocha@^3.6.3":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-plugin-unit-mocha/download/@vue/cli-plugin-unit-mocha-3.6.0.tgz#0294756aabe34956c4af06b67253dea28b7021c9"
   integrity sha1-ApR1aqvjSVbErwa2clPeootwIck=
@@ -865,7 +865,7 @@
     mocha "^5.2.0"
     mocha-webpack "^2.0.0-beta.0"
 
-"@vue/cli-service@^3.4.1":
+"@vue/cli-service@^3.6.3":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.6.0.tgz#3b76d4229a9bea9020ea0a4d0cda03402ed334eb"
   integrity sha1-O3bUIpqb6pAg6gpNDNoDQC7TNOs=
@@ -964,7 +964,7 @@
   resolved "http://registry.npm.taobao.org/@vue/preload-webpack-plugin/download/@vue/preload-webpack-plugin-1.1.0.tgz#d768dba004261c029b53a77c5ea2d5f9ee4f3cce"
   integrity sha1-12jboAQmHAKbU6d8XqLV+e5PPM4=
 
-"@vue/test-utils@^1.0.0-beta.20":
+"@vue/test-utils@1.0.0-beta.29":
   version "1.0.0-beta.29"
   resolved "http://registry.npm.taobao.org/@vue/test-utils/download/@vue/test-utils-1.0.0-beta.29.tgz#c942cf25e891cf081b6a03332b4ae1ef430726f0"
   integrity sha1-yULPJeiRzwgbagMzK0rh70MHJvA=
@@ -7954,7 +7954,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.6:
+vue@^2.6.10:
   version "2.6.10"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
