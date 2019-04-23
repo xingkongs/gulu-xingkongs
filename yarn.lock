@@ -843,7 +843,7 @@
   resolved "http://registry.npm.taobao.org/@vue/cli-overlay/download/@vue/cli-overlay-3.6.0.tgz#56421093f5ff90b2e4015b4bdc71180250e9211e"
   integrity sha1-VkIQk/X/kLLkAVtL3HEYAlDpIR4=
 
-"@vue/cli-plugin-babel@^3.6.3":
+"@vue/cli-plugin-babel@^3.6.0":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.6.0.tgz#7863fca0151a60a7c9af9517b0537cc9a1420e64"
   integrity sha1-eGP8oBUaYKfJr5UXsFN8yaFCDmQ=
@@ -854,7 +854,7 @@
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
 
-"@vue/cli-plugin-unit-mocha@^3.6.3":
+"@vue/cli-plugin-unit-mocha@^3.6.0":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-plugin-unit-mocha/download/@vue/cli-plugin-unit-mocha-3.6.0.tgz#0294756aabe34956c4af06b67253dea28b7021c9"
   integrity sha1-ApR1aqvjSVbErwa2clPeootwIck=
@@ -865,7 +865,7 @@
     mocha "^5.2.0"
     mocha-webpack "^2.0.0-beta.0"
 
-"@vue/cli-service@^3.6.3":
+"@vue/cli-service@^3.6.0":
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-service/download/@vue/cli-service-3.6.0.tgz#3b76d4229a9bea9020ea0a4d0cda03402ed334eb"
   integrity sha1-O3bUIpqb6pAg6gpNDNoDQC7TNOs=
@@ -8339,6 +8339,11 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+yarn@^1.15.2:
+  version "1.15.2"
+  resolved "http://registry.npm.taobao.org/yarn/download/yarn-1.15.2.tgz#7a064ca81ca34235f16376ad2f796ed432f9e285"
+  integrity sha1-egZMqByjQjXxY3atL3lu1DL54oU=
 
 yorkie@^2.0.0:
   version "2.0.0"
