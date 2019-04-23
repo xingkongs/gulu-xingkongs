@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :class="toastClasses">
+    <div class="gulu-toast" :class="toastClasses">
         <div class="g-toast" ref="toast">
             <div class="toast_content">
                 <slot v-if="!enableHtml"></slot>
@@ -115,11 +115,11 @@
         }
     }
 
-    .wrapper {
+    .gulu-toast {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
-
+        z-index: 21;
         &.position-top {
             top: 0;
 
