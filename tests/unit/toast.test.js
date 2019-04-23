@@ -1,6 +1,6 @@
 const expect = chai.expect
 import Vue from 'vue'
-import Toast from '../src/gulu-toast'
+import Toast from '../../src/gulu-toast'
 
 describe('Toast',()=>{
     it('toast存在',()=>{

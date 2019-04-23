@@ -1,7 +1,7 @@
 const expect  = chai.expect
 import Vue from 'vue'
-import Row from '../src/grid/gulu-row'
-import Col from '../src/grid/gulu-col'
+import Row from '../../src/grid/gulu-row'
+import Col from '../../src/grid/gulu-col'
 
 describe('Row',()=>{
     it('row 存在',()=>{

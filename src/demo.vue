@@ -1,11 +1,9 @@
 <template>
     <div class="box">
-        <g-collapse single :selected.sync="selectedTab">
-            <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
-            <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
-            <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
-        </g-collapse>
-        {{selectedTab}}
+        <g-popover position="bottom" trigger="hover">
+            <template slot="content">popoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopoverpopover</template>
+            <g-button>点我</g-button>
+        </g-popover>
     </div>
 </template>
 

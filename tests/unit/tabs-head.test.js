@@ -1,6 +1,6 @@
 const expect = chai.expect
 import Vue from 'vue'
-import TabsHead from '../src/tabs/gulu-tabs-head'
+import TabsHead from '../../src/tabs/gulu-tabs-head'
 
 
 Vue.config.devtools = false
