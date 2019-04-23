@@ -32,7 +32,7 @@
             position: absolute;
             bottom:0;
             width:100px;
-            border:1px solid blue;
+            border-bottom:1px solid blue;
             transition:all 200ms ease-in;
         }
         & .actionsWrapper{
