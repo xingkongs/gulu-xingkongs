@@ -14,9 +14,10 @@
         inject:['eventBus'],
         mounted(){
             this.eventBus && this.eventBus.$on('update:selected',(name,item)=>{
+                let wrapperLeft = document.querySelector(".g-tabs-head").getBoundingClientRect().left;
                 let {width,height,left,top} = item.$el.getBoundingClientRect()
                 this.$refs.line.style.width = `${width}px`
-                this.$refs.line.style.left = `${left}px`
+                this.$refs.line.style.left = `${left-wrapperLeft}px`
             })
         }
     }
