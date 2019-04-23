@@ -1,4 +1,4 @@
-# gulu-xingkongs - 一个 Vue UI 组件
+# gulu-xingkongs
 
 ## 介绍
 这是我在学习 Vue 过程中做的一个 UI 框架

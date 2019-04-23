@@ -1,18 +1,24 @@
 module.exports = {
     base: '/gulu-xingkongs/',
-    title: 'Hello VuePress',
-    description: 'Just playing around',
+    title: 'gulu-xingkong',
+    description: '一个vue UI 组件',
     themeConfig: {
         nav: [
-            { text: 'Home', link: '/' },
+            { text: '首页', link: '/' },
             { text: 'Guide', link: '/guide/' },
-            { text: 'External', link: 'https://google.com' },
+            { text: 'blog', link: 'https://www.jianshu.com/u/fe7e60498141' },
         ],
         sidebar: [
             {
                 title: '组件',
                 children: [
-                    '/components/button/'
+                    '/components/button/',
+                    '/components/input/',
+                    '/components/tab/',
+                    '/components/grid/',
+                    '/components/layout/',
+                    '/components/toast/',
+                    '/components/collapse/',
                 ]
             },
         ]
