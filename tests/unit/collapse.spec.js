@@ -1,6 +1,10 @@
-const expect = chai.expect
+import chai,{ expect } from 'chai'
+import { shallowMount,mount } from '@vue/test-utils'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
 import Vue from 'vue'
-import Collapse from '../src/collapse/collapse'
+chai.use(sinonChai)
+import Collapse from '../../src/collapse/collapse'
 
 
 Vue.config.devtools = false
