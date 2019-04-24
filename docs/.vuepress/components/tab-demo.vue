@@ -87,6 +87,8 @@
     .box {
         overflow: hidden;
         padding:2px;
+    }
+    .g-tabs{
         min-height: 30vh;
     }
 </style>

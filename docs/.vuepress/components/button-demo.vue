@@ -1,6 +1,6 @@
 <template>
     <div>
-        <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>
+        <g-button>按钮</g-button>
         <g-button :loading="loading2" icon="settings" @click="loading2 = !loading2">设置</g-button>
         <g-button :loading="loading3" icon="settings" icon-position="right" @click="loading3 = !loading3">设置</g-button>
         <g-button-group>
@@ -29,8 +29,7 @@
                 loading2: false,
                 loading3: false,
                 content: `
-                <g-button :loading="loading1" @click="loading1 = !loading1">
-                    按钮</g-button>
+                <g-button>按钮</g-button>
                 <g-button :loading="loading2" icon="settings" @click="loading2 = !loading2">
                     设置</g-button>
                 <g-button :loading="loading3" icon="settings" icon-position="right"

@@ -3,7 +3,7 @@
         <div class="box">
             <g-layout class="layout--wrapper">
                 <g-header class="header">header</g-header>
-                <g-content class="content">content</g-content>
+                <g-content class="contenter">content</g-content>
                 <g-footer class="footer">footer</g-footer>
             </g-layout>
         </div>
@@ -12,7 +12,7 @@
                 <g-header class="header">header</g-header>
                 <g-layout>
                     <g-sider class="sider">sider</g-sider>
-                    <g-content class="content">content</g-content>
+                    <g-content class="contenter">content</g-content>
                 </g-layout>
                 <g-footer class="footer">footer</g-footer>
             </g-layout>
@@ -22,7 +22,7 @@
             <g-layout class="layout--wrapper">
                 <g-header class="header">header</g-header>
                 <g-layout>
-                    <g-content class="content">content</g-content>
+                    <g-content class="contenter">content</g-content>
                     <g-sider class="sider">sider</g-sider>
                 </g-layout>
                 <g-footer class="footer">footer</g-footer>
@@ -34,7 +34,7 @@
                 <g-sider class="sider">sider</g-sider>
                 <g-layout>
                     <g-header class="header">header</g-header>
-                    <g-content class="content">content</g-content>
+                    <g-content class="contenter">content</g-content>
                     <g-footer class="footer">footer</g-footer>
                 </g-layout>
             </g-layout>
@@ -116,6 +116,9 @@
         padding:2px;
         margin:20px auto;
     }
+    .layout--wrapper{
+        min-height: 30vh;
+    }
     .sider{
         width:300px;
         background: lighten(blueviolet,10%);
@@ -123,7 +126,7 @@
     .header{
         background: lighten(blueviolet,40%);
     }
-    .content{
+    .contenter{
         background: lighten(blueviolet,30%);
     }
     .footer{

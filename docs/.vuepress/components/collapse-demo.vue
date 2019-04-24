@@ -68,6 +68,9 @@
     .box {
         overflow: hidden;
         padding:2px;
-        min-height: 30vh;
+        min-height: 50vh;
+    }
+    .g-collapse{
+
     }
 </style>
