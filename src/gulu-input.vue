@@ -54,7 +54,6 @@
         }
 
         > input {
-            height: $height;
             border: 1px solid $input-border-color;
             padding: 8px 16px;
             font-size: inherit;
