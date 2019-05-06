@@ -1,8 +1,5 @@
 # gulu-xingkongs
 
-## 介绍
-这是我在学习 Vue 过程中做的一个 UI 框架
-
 ## 开始使用
 
 1.使用本框架前，请在本css 中开启 border-box
