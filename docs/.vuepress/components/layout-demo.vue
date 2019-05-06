@@ -50,7 +50,7 @@
         <div class="box">
             <h3>例4</h3>
             <g-layout class="layout--wrapper">
-                <g-sider class="sider">sider</g-sider>
+                <g-sider slideClose="true" class="sider">sider</g-sider>
                 <g-layout>
                     <g-header class="header">header</g-header>
                     <g-content class="contenter">content</g-content>
@@ -118,7 +118,7 @@
                 content4: `
 <div class="box">
 <g-layout class="layout--wrapper">
-    <g-sider class="sider">sider</g-sider>
+    <g-sider slideClose="true" class="sider">sider</g-sider>
     <g-layout>
         <g-header class="header">header</g-header>
         <g-content class="content">content</g-content>
