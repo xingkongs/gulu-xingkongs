@@ -4,19 +4,19 @@ $button-bg: white;
 $button-active-bg: #eee;
 $border-radius: 4px;
 $color: #333;
-$border-color: #999;
+$border-color: #f0f0f0;
 $input-border-color: #e6e6e6;
-$input-border-color-hover:#bbb;
+$input-border-color-hover: #bbb;
 $border-color-hover: #666;
 $height: 32px;
 $input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(59, 180, 242, .3);
 $input-box-shadow-error: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px #eda4a2;
-$toast-color:#fff;
-$toast-min-height:40px;
-$toast-animation-delay:300ms;
-$toast-bg:rgba(0, 0, 0, 0.75);
-$tabs-active-text:blue;
-$tabs-disabled-text:grey;
+$toast-color: #fff;
+$toast-min-height: 40px;
+$toast-animation-delay: 300ms;
+$toast-bg: rgba(0, 0, 0, 0.75);
+$tabs-active-text: blue;
+$tabs-disabled-text: grey;
 @keyframes loading {
   0% {
     transform: rotate(0)
