@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="box" id="app">
         <g-cascader :source="source"></g-cascader>
     </div>
 </template>
