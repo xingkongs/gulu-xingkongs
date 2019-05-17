@@ -1,19 +1,20 @@
 <template>
     <div class="g-cascader-item">
         {{itemSource.name}}
-        <GuluCascaderitem v-if="itemSource.children" v-for="item in itemSource.children" :item-source="item">
-            {{itemSource.name}}
-        </GuluCascaderitem>
+        <GuluCascaderItem v-if="itemSource.children" v-for="(item,i) in itemSource.children" :item-source="item"
+                          :key="`${item.name}${i}`">
+            {{item.name}}
+        </GuluCascaderItem>
     </div>
 
 </template>
 
 <script>
-    import GuluCascaderitem from "./gulu-cascader-item";
+    import GuluCascaderItem from "./gulu-cascader-item";
     export default {
-        name: "GuluCascaderitem",
+        name: "GuluCascaderItem",
         components: {
-            GuluCascaderitem
+            GuluCascaderItem: GuluCascaderItem
         },
         props: {
             itemSource: {
