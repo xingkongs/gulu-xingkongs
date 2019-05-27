@@ -1,6 +1,6 @@
 <template>
     <div class="box" id="app">
-        <g-cascader :source="source"></g-cascader>
+        <g-cascader-demo :source="source"></g-cascader-demo>
     </div>
 </template>
 
@@ -28,6 +28,7 @@
     import GuluCollapse from "./collapse/collapse";
     import GuluCollapseItem from "./collapse/collapseItem";
     import GuluCascader from "./cascader/gulu-cascader";
+    import CascaderDemo from "./cascader/cascader-demo";
     Vue.component("g-button", Button);
     Vue.component("g-icon", Icon);
     Vue.component("g-button-group", ButtonGroup);
@@ -50,6 +51,7 @@
     Vue.component("g-collapse", GuluCollapse);
     Vue.component("g-collapse-item", GuluCollapseItem);
     Vue.component("g-cascader", GuluCascader);
+    Vue.component("g-cascader-demo", CascaderDemo);
     export default {
         name: "demo",
         data() {
