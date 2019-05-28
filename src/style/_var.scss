@@ -1,5 +1,6 @@
 $border-color-hover: #666;
 $border-color: #f0f0f0;
+$border-color-dark: #ccc;
 $border-radius: 4px;
 $button-active-bg: #eee;
 $button-bg: white;
@@ -25,7 +26,9 @@ $toast-min-height: 40px;
     transform: rotate(360deg)
   }
 }
-
 @mixin loading {
   animation: loading 1s infinite linear;
+}
+%box-shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }

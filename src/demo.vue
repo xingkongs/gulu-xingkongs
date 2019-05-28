@@ -1,6 +1,6 @@
 <template>
     <div class="box" id="app">
-        <g-cascader :source="source"></g-cascader>
+        <g-cascader :source="source" height="200px"></g-cascader>
     </div>
 </template>
 
@@ -137,7 +137,6 @@
     }
     .box {
         margin: 50px 200px 80px;
-        overflow: hidden;
         padding: 2px;
     }
 </style>

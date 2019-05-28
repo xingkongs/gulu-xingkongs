@@ -5,11 +5,11 @@
 </template>
 
 <script>
-    import './svg'
+    import "./svg";
     export default {
         name: "GuluIcon",
-        props:{name}
-    }
+        props: {name}
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -17,5 +17,6 @@
         width: 1em;
         height: 1em;
         vertical-align: -0.18em;
+        fill: currentColor;
     }
 </style>
