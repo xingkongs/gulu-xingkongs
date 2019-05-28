@@ -1,6 +1,6 @@
 <template>
     <div class="box" id="app">
-        <g-cascader-demo :source="source"></g-cascader-demo>
+        <g-cascader :source="source"></g-cascader>
     </div>
 </template>
 
