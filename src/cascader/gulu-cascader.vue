@@ -19,7 +19,7 @@
         name: "GuluCascader",
         data() {
             return {
-                popoverVisible: true
+                popoverVisible: false
             };
         },
         props: {
@@ -32,6 +32,9 @@
             selected: {
                 type: Array,
                 default: () => []
+            },
+            loadData: {
+                type: Function
             }
         },
         components: {
@@ -46,6 +49,12 @@
         methods: {
             updateSelected(newSelected) {
                 this.$emit("update:selected", newSelected);
+                let lastItem = newSelected[newSelected.length - 1];
+                let updateSource = (result) => {
+                    let updateTo = this.source.filter(item => item.id === lastItem.id)[0];
+                    this.$set(updateTo, "children", result);
+                };
+                this.loadData(lastItem, updateSource);
             }
         }
     };

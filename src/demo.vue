@@ -2,8 +2,7 @@
     <div class="box" id="app">
         <g-cascader :source="source" height="200px"
                 :selected.sync="selected"
-                @update:selected="xxx"
-        ></g-cascader>
+                :loadData="loadData"></g-cascader>
     </div>
 </template>
 
@@ -56,14 +55,8 @@
     Vue.component("g-collapse-item", GuluCollapseItem);
     Vue.component("g-cascader", GuluCascader);
     Vue.component("g-cascader-demo", CascaderDemo);
-    function ajax1(parent_id = 0, success) {
-        let result = db.filter(item => item.parent_id === parent_id);
-        return setTimeout(() => {
-            success && success(result);
-        }, 3000);
-    }
     function ajax(parent_id = 0) {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             let result = db.filter(item => item.parent_id === parent_id);
             setTimeout(() => {
                 resolve(result);
@@ -92,13 +85,9 @@
             });
         },
         methods: {
-            xxx() {
-                let {id} = this.selected[0];
+            loadData({id}, fn) {
                 ajax(id).then((result) => {
-                    let lastSelectedLevel = this.source.filter(item => {
-                        return item.id === id;
-                    })[0];
-                    this.$set(lastSelectedLevel, "children", result);
+                    fn(result);
                 });
             },
             yyy(message) {
