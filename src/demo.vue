@@ -53,6 +53,11 @@
     Vue.component("g-collapse-item", GuluCollapseItem);
     Vue.component("g-cascader", GuluCascader);
     Vue.component("g-cascader-demo", CascaderDemo);
+    import db from "./db";
+    function ajax(parent_id = 0) {
+        return db.filter(item => item.parent_id === parent_id);
+    }
+    console.log(ajax());
     export default {
         name: "demo",
         data() {
@@ -63,39 +68,7 @@
                 message: "xxx",
                 selectedTab: ["2"],
                 selected: [],
-                source: [{
-                    name: "浙江",
-                    children: [
-                        {
-                            name: "杭州",
-                            children: [
-                                {name: "上城"},
-                                {name: "下城"},
-                                {name: "江干"},
-                            ]
-                        },
-                        {
-                            name: "嘉兴",
-                            children: [
-                                {name: "南湖"},
-                                {name: "秀洲"},
-                                {name: "嘉善"},
-                            ]
-                        },
-                    ]
-                }, {
-                    name: "福建",
-                    children: [
-                        {
-                            name: "福州",
-                            children: [
-                                {name: "鼓楼"},
-                                {name: "台江"},
-                                {name: "仓山"},
-                            ]
-                        },
-                    ]
-                }]
+                source: ajax()
             };
         },
         methods: {

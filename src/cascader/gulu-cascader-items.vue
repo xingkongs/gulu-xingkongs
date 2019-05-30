@@ -77,6 +77,7 @@
         align-items: flex-start;
         .left {
             padding: 0.2em 0;
+            overflow: auto;
         }
         .label {
             min-width: 100px;
