@@ -1,6 +1,12 @@
 <template>
     <div class="box" id="app">
-        <g-cascader :source="source" height="200px"></g-cascader>
+        <div>
+            {{selected[0]&&selected[0].name||"空"}}
+            {{selected[1]&&selected[1].name||"空"}}
+            {{selected[2]&&selected[2].name||"空"}}
+        </div>
+        <g-cascader :source="source" :selected="selected" height="200px"
+                @update:selected="selected=$event"></g-cascader>
     </div>
 </template>
 
@@ -61,6 +67,7 @@
                 loading3: false,
                 message: "xxx",
                 selectedTab: ["2"],
+                selected: [],
                 source: [{
                     name: "浙江",
                     children: [

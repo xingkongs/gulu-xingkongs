@@ -2,7 +2,9 @@
     <div class="g-cascader">
         <div class="trigger" @click="popoverVisible=!popoverVisible"></div>
         <div class="popover" v-if="popoverVisible">
-            <gulu-cascader-items :items="source" :height="height"></gulu-cascader-items>
+            <gulu-cascader-items :items="source" :height="height"
+                    :selected="selected"
+                    @update:selected="updateSelected"></gulu-cascader-items>
         </div>
     </div>
 </template>
@@ -22,10 +24,19 @@
             },
             height: {
                 type: String
+            },
+            selected: {
+                type: Array,
+                default: () => []
             }
         },
         components: {
             GuluCascaderItems
+        },
+        methods: {
+            updateSelected(newSelected) {
+                this.$emit("update:selected", newSelected);
+            }
         }
     };
 </script>

@@ -1,15 +1,17 @@
 <template>
     <div class="g-cascader-item">
         <div class="left" :style="{height:height}">
-            <div class="label" v-for="item in items" @click="leftSelected=item">
+            <div class="label" v-for="item in items" @click="onClickLabel(item)">
                 {{item.name}}
                 <g-icon class="icon" name="right" v-if="item.children"></g-icon>
             </div>
-
         </div>
         <div class="right">
             <div v-if="rightItem">
-                <gulu-cascader-item :items="rightItem" :height="height"></gulu-cascader-item>
+                <gulu-cascader-item :items="rightItem" :height="height"
+                        :level="level+1"
+                        :selected="selected"
+                        @update:selected="updateSelected"></gulu-cascader-item>
             </div>
         </div>
 
@@ -27,23 +29,41 @@
             },
             height: {
                 type: String
+            },
+            selected: {
+                type: Array,
+                default: () => []
+            },
+            level: {
+                type: Number,
+                default: 0
             }
         },
         components: {
             gIcon: GuluIcon
         },
         data() {
-            return {
-                leftSelected: null
-            };
+            return {};
         },
         computed: {
             rightItem() {
-                if (this.leftSelected && this.leftSelected.children) {
-                    return this.leftSelected.children;
+                let currentSelected = this.selected[this.level];
+                if (currentSelected && currentSelected.children) {
+                    return currentSelected.children;
                 } else {
                     return null;
                 }
+            }
+        },
+        methods: {
+            onClickLabel(item) {
+                let copy = JSON.parse(JSON.stringify(this.selected));
+                copy[this.level] = item;
+                copy.splice(this.level + 1);
+                this.$emit("update:selected", copy);
+            },
+            updateSelected(newSelected) {
+                this.$emit("update:selected", newSelected);
             }
         }
     };
