@@ -1,7 +1,9 @@
 <template>
     <div class="box" id="app">
         <g-cascader :source="source" height="200px"
-                :selected.sync="selected"></g-cascader>
+                :selected.sync="selected"
+                @update:selected="xxx"
+        ></g-cascader>
     </div>
 </template>
 
@@ -30,6 +32,7 @@
     import GuluCollapseItem from "./collapse/collapseItem";
     import GuluCascader from "./cascader/gulu-cascader";
     import CascaderDemo from "./cascader/cascader-demo";
+    import db from "./db";
     Vue.component("g-button", Button);
     Vue.component("g-icon", Icon);
     Vue.component("g-button-group", ButtonGroup);
@@ -53,11 +56,20 @@
     Vue.component("g-collapse-item", GuluCollapseItem);
     Vue.component("g-cascader", GuluCascader);
     Vue.component("g-cascader-demo", CascaderDemo);
-    import db from "./db";
-    function ajax(parent_id = 0) {
-        return db.filter(item => item.parent_id === parent_id);
+    function ajax1(parent_id = 0, success) {
+        let result = db.filter(item => item.parent_id === parent_id);
+        return setTimeout(() => {
+            success && success(result);
+        }, 3000);
     }
-    console.log(ajax());
+    function ajax(parent_id = 0) {
+        return new Promise((resolve) => {
+            let result = db.filter(item => item.parent_id === parent_id);
+            setTimeout(() => {
+                resolve(result);
+            });
+        });
+    }
     export default {
         name: "demo",
         data() {
@@ -68,10 +80,27 @@
                 message: "xxx",
                 selectedTab: ["2"],
                 selected: [],
-                source: ajax()
+                source: []
             };
         },
+        created() {
+            // ajax1(0, (result) => {
+            //     this.source = result;
+            // });
+            ajax(0).then((result) => {
+                this.source = result;
+            });
+        },
         methods: {
+            xxx() {
+                let {id} = this.selected[0];
+                ajax(id).then((result) => {
+                    let lastSelectedLevel = this.source.filter(item => {
+                        return item.id === id;
+                    })[0];
+                    this.$set(lastSelectedLevel, "children", result);
+                });
+            },
             yyy(message) {
                 console.log(message);
             },
