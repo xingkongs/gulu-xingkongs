@@ -1,7 +1,7 @@
 <template>
     <div class="box" id="app">
-        <g-cascader :source="source" :selected="selected" height="200px"
-                @update:selected="selected=$event"></g-cascader>
+        <g-cascader :source="source" height="200px"
+                :selected.sync="selected"></g-cascader>
     </div>
 </template>
 
