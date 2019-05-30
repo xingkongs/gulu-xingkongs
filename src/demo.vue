@@ -1,10 +1,5 @@
 <template>
     <div class="box" id="app">
-        <div>
-            {{selected[0]&&selected[0].name||"空"}}
-            {{selected[1]&&selected[1].name||"空"}}
-            {{selected[2]&&selected[2].name||"空"}}
-        </div>
         <g-cascader :source="source" :selected="selected" height="200px"
                 @update:selected="selected=$event"></g-cascader>
     </div>

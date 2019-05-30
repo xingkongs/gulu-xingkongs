@@ -1,6 +1,9 @@
 <template>
     <div class="g-cascader">
-        <div class="trigger" @click="popoverVisible=!popoverVisible"></div>
+        <div class="trigger" @click="popoverVisible=!popoverVisible">
+            <span>{{result}}</span>
+            <g-icon class="icon" name="down"></g-icon>
+        </div>
         <div class="popover" v-if="popoverVisible">
             <gulu-cascader-items :items="source" :height="height"
                     :selected="selected"
@@ -11,6 +14,7 @@
 
 <script>
     import GuluCascaderItems from "./gulu-cascader-items";
+    import GuluIcon from "../gulu-icon";
     export default {
         name: "GuluCascader",
         data() {
@@ -31,7 +35,13 @@
             }
         },
         components: {
-            GuluCascaderItems
+            GuluCascaderItems,
+            GIcon: GuluIcon
+        },
+        computed: {
+            result() {
+                return this.selected.map(item => item.name).join("/");
+            }
         },
         methods: {
             updateSelected(newSelected) {
@@ -46,15 +56,26 @@
     .g-cascader {
         position: relative;
         .trigger {
-            width: 200px;
-            height: 32px;
-            border: 1px solid red;
+            min-width: 10em;
+            height: $button-height;
+            border: 1px solid $border-color-dark;
+            border-radius: $border-radius;
+            display: inline-flex;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.8em;
+            .icon {
+                color: #ccc;
+            }
         }
         & > .popover {
             position: absolute;
             top: 100%;
             left: 0;
             margin-top: 10px;
+            z-index: 2;
+            background: #fff;
             @extend %box-shadow;
         }
     }
