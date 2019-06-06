@@ -1,6 +1,6 @@
 <template>
     <div class="box" id="app">
-        <g-cascader :source="source" height="200px"
+        <g-cascader :source.sync="source" height="200px"
                 :selected.sync="selected"
                 :loadData="loadData"></g-cascader>
     </div>

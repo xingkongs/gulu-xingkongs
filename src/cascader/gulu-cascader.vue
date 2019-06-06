@@ -82,9 +82,10 @@
                     }
                 };
                 let updateSource = (result) => {
-                    let updateTo = complex(this.source, lastItem.id);
-                    console.log(updateTo);
-                    this.$set(updateTo, "children", result);
+                    let copy = JSON.parse(JSON.stringify(this.source));
+                    let updateTo = complex(copy, lastItem.id);
+                    updateTo.children = result;
+                    this.$emit("update:source",copy)
                 };
                 this.loadData(lastItem, updateSource);
             }
