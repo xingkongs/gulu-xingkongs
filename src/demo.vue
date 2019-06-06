@@ -58,9 +58,12 @@
     function ajax(parent_id = 0) {
         return new Promise((resolve, reject) => {
             let result = db.filter(item => item.parent_id === parent_id);
+            result.map(node => {
+                node.isLeaf = db.filter(item => item.parent_id === node.id).length <= 0;
+            });
             setTimeout(() => {
                 resolve(result);
-            });
+            }, 200);
         });
     }
     export default {

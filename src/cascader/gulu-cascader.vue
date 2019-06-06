@@ -85,9 +85,11 @@
                     let copy = JSON.parse(JSON.stringify(this.source));
                     let updateTo = complex(copy, lastItem.id);
                     updateTo.children = result;
-                    this.$emit("update:source",copy)
+                    this.$emit("update:source", copy);
                 };
-                this.loadData(lastItem, updateSource);
+                if (!lastItem.isLeaf) {
+                    this.loadData(lastItem, updateSource);
+                }
             }
         }
     };

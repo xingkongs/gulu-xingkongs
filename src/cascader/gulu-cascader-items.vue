@@ -3,7 +3,7 @@
         <div class="left" :style="{height:height}">
             <div class="label" v-for="item in items" @click="onClickLabel(item)">
                 {{item.name}}
-                <g-icon class="icon" name="right" v-if="item.children"></g-icon>
+                <g-icon class="icon" name="right" v-if="!item.isLeaf"></g-icon>
             </div>
         </div>
         <div class="right">
