@@ -50,8 +50,40 @@
             updateSelected(newSelected) {
                 this.$emit("update:selected", newSelected);
                 let lastItem = newSelected[newSelected.length - 1];
+                let simplest = (children, id) => {
+                    return children.filter(item => item.id === id)[0];
+                };
+                let complex = (children, id) => {
+                    let noChildren = [];
+                    let hasChildren = [];
+                    children.forEach(item => {
+                        if (item.children) {
+                            hasChildren.push(item);
+                        } else {
+                            noChildren.push(item);
+                        }
+                    });
+                    let found = simplest(noChildren, id);
+                    if (found) {
+                        return found;
+                    } else {
+                        found = simplest(hasChildren, id);
+                        if (found) {
+                            return found;
+                        } else {
+                            for (let i = 0; i < hasChildren.length; i++) {
+                                found = complex(hasChildren[i].children, id);
+                                if (found) {
+                                    return found;
+                                }
+                            }
+                            return undefined;
+                        }
+                    }
+                };
                 let updateSource = (result) => {
-                    let updateTo = this.source.filter(item => item.id === lastItem.id)[0];
+                    let updateTo = complex(this.source, lastItem.id);
+                    console.log(updateTo);
                     this.$set(updateTo, "children", result);
                 };
                 this.loadData(lastItem, updateSource);
