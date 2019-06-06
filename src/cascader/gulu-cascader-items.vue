@@ -85,6 +85,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            user-select: none;
+            cursor: pointer;
+            &:hover {
+                background: $grey;
+            }
             .icon {
                 color: #ccc;
             }
