@@ -3,7 +3,7 @@
         <div class="left" :style="{height:height}">
             <div class="label" v-for="item in items" @click="onClickLabel(item)">
                 {{item.name}}
-                <g-icon class="icon" name="right" v-if="!item.isLeaf"></g-icon>
+                <g-icon class="icon" name="right" v-if="rightArrowVisible(item)"></g-icon>
             </div>
         </div>
         <div class="right">
@@ -11,7 +11,7 @@
                 <gulu-cascader-item :items="rightItem" :height="height"
                         :level="level+1"
                         :selected="selected"
-                        @update:selected="updateSelected"></gulu-cascader-item>
+                        @update:selected="updateSelected" :load-data="loadData"></gulu-cascader-item>
             </div>
         </div>
 
@@ -33,6 +33,9 @@
             selected: {
                 type: Array,
                 default: () => []
+            },
+            loadData: {
+                type: Function
             },
             level: {
                 type: Number,
@@ -64,6 +67,9 @@
             },
             updateSelected(newSelected) {
                 this.$emit("update:selected", newSelected);
+            },
+            rightArrowVisible(item) {
+                return this.loadData ? !item.isLeaf : item.children;
             }
         }
     };

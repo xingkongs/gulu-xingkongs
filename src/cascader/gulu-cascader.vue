@@ -7,7 +7,7 @@
         <div class="popover" v-if="popoverVisible">
             <gulu-cascader-items :items="source" :height="height"
                     :selected="selected"
-                    @update:selected="updateSelected"></gulu-cascader-items>
+                    @update:selected="updateSelected" :loadData="loadData"></gulu-cascader-items>
         </div>
     </div>
 </template>
@@ -88,7 +88,7 @@
                     this.$emit("update:source", copy);
                 };
                 if (!lastItem.isLeaf) {
-                    this.loadData(lastItem, updateSource);
+                    this.loadData && this.loadData(lastItem, updateSource);
                 }
             }
         }
