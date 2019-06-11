@@ -32,6 +32,7 @@
     import GuluCascader from "./cascader/gulu-cascader";
     import CascaderDemo from "./cascader/cascader-demo";
     import db from "./db";
+    import {removeListener} from "./click-outside";
     Vue.component("g-button", Button);
     Vue.component("g-icon", Icon);
     Vue.component("g-button-group", ButtonGroup);
@@ -86,6 +87,9 @@
             ajax(0).then((result) => {
                 this.source = result;
             });
+        },
+        destroyed() {
+            removeListener();
         },
         methods: {
             loadData({id}, fn) {
