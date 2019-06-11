@@ -4,9 +4,10 @@
             <span>{{result}}</span>
             <g-icon class="icon" name="down"></g-icon>
         </div>
-        <div class="popover" v-if="popoverVisible">
+        <div class="popover" v-if="popoverVisible&&source.length">
             <gulu-cascader-items :items="source" :height="height"
                     :selected="selected"
+                    :loading-item="loadingItem"
                     @update:selected="updateSelected" :loadData="loadData"></gulu-cascader-items>
         </div>
     </div>
@@ -21,7 +22,8 @@
         directives: {ClickOutSide},
         data() {
             return {
-                popoverVisible: false
+                popoverVisible: false,
+                loadingItem: {}
             };
         },
         props: {
@@ -97,13 +99,15 @@
                     }
                 };
                 let updateSource = (result) => {
+                    this.loadingItem = {};
                     let copy = JSON.parse(JSON.stringify(this.source));
                     let updateTo = complex(copy, lastItem.id);
                     updateTo.children = result;
                     this.$emit("update:source", copy);
                 };
-                if (!lastItem.isLeaf) {
-                    this.loadData && this.loadData(lastItem, updateSource);
+                if (!lastItem.isLeaf && this.loadData) {
+                    this.loadData(lastItem, updateSource);
+                    this.loadingItem = lastItem;
                 }
             }
         }

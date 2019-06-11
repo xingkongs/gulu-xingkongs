@@ -1,8 +1,10 @@
 <template>
-    <div class="box" id="app">
-        <g-cascader :source.sync="source" height="200px"
-                :selected.sync="selected"
-                :loadData="loadData"></g-cascader>
+    <div id="app">
+        <div class="box">
+            <g-cascader :source.sync="source" height="200px"
+                    :selected.sync="selected"
+                    :loadData="loadData"></g-cascader>
+        </div>
     </div>
 </template>
 
@@ -64,7 +66,7 @@
             });
             setTimeout(() => {
                 resolve(result);
-            }, 200);
+            }, 2000);
         });
     }
     export default {
