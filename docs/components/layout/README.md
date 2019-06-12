@@ -1,4 +1,4 @@
-# layout
+# Layout
 
 <ClientOnly>
   <layout-demo/>

@@ -5,11 +5,13 @@
             <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
             <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
         </g-collapse>
-        <g-collapse single :selected.sync="selectedArray">
-            <g-collapse-item title="源码" name="5">
+        <div class="toggerWrapper">
+            <span class="toggleSpan" @click="toggle(0)">源码</span>
+            <template v-if="preVisible[0]">
+                <pre><code>{{content1.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 <pre><code>{{content.replace(/^ {11}/gm, "").trim()}}</code></pre>
-            </g-collapse-item>
-        </g-collapse>
+            </template>
+        </div>
     </div>
 </template>
 
@@ -24,17 +26,24 @@
         },
         data() {
             return {
+                preVisible: [false],
                 selectedArray: ["2", "5"],
-                content: `
+                content1: `
 <g-collapse single :selected.sync="selectedArray">
     <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
     <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
     <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
 </g-collapse>
-`
+`,
+                content: `
+                selectedArray: ["2", "5"],
+                `
             };
         },
         methods: {
+            toggle(index) {
+                this.preVisible.splice(index, 1, !this.preVisible[index]);
+            },
             showTop() {
                 this.showToast("top");
             },
@@ -67,7 +76,6 @@
         padding: 0;
         box-sizing: border-box;
     }
-
     .box {
         overflow: hidden;
         padding: 20px 20px;
@@ -75,25 +83,28 @@
         border: 1px solid #f0f0f0;
         min-height: 50vh;
     }
-
     h3 {
         margin-bottom: 20px;
     }
-
     .g-collapse {
         border: none;
         margin: 20px auto;
-
         &.example {
             border: 1px solid #f0f0f0;
-
             .g-content {
                 padding: 24px 50px;
             }
         }
-
     }
-
-
-
+    .toggerWrapper {
+        margin: 20px auto;
+        .toggleSpan {
+            user-select: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f0f0f0;
+            cursor: pointer;
+            line-height: 1;
+        }
+    }
 </style>

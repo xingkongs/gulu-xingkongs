@@ -1,4 +1,4 @@
-# toast
+# Toast
 
 <ClientOnly>
   <toast-demo/>

@@ -1,4 +1,4 @@
-# grid
+# Grid
 
 <ClientOnly>
   <grid-demo/>

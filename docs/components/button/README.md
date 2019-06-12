@@ -1,4 +1,4 @@
-# button
+# Button
 
 <ClientOnly>
   <button-demo/>

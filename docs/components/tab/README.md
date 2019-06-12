@@ -1,4 +1,4 @@
-# tab
+# Tab
 
 <ClientOnly>
   <tab-demo/>

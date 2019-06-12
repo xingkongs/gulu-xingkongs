@@ -1,4 +1,4 @@
-# collapse 
+# Collapse 
 ### 手风琴
 
 <ClientOnly>

@@ -1,4 +1,4 @@
-# input
+# Input
 
 <ClientOnly>
   <input-demo/>
