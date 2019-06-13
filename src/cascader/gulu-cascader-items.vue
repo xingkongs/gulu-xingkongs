@@ -94,6 +94,23 @@
         .left {
             padding: 0.2em 0;
             overflow: auto;
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #fff;
+                border-radius: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                opacity: 1;
+                background: #fff;
+            }
+            &:hover::-webkit-scrollbar-thumb, &:active::-webkit-scrollbar-thumb {
+                background-color: #bebebe
+            }
+            &:hover::-webkit-scrollbar-track {
+                background: #e4e4e4;
+            }
         }
         .label {
             min-width: 100px;
