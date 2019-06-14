@@ -1,7 +1,7 @@
 <template>
     <div class="g-slide">
         <div class="g-slide-window">
-            <div class="g-slide-inner" style="width:200px;height:200px;">
+            <div class="g-slide-inner">
                 <slot></slot>
             </div>
         </div>

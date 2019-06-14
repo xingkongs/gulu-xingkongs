@@ -20,11 +20,15 @@
 
 <style scoped lang="scss">
     .g-slide-item {
-        position: absolute;
     }
     .slide-enter-active,
     .slide-leave-active {
         transition: all 1s;
+    }
+    .slide-leave-active {
+        position: absolute;
+        left: 0;
+        top: 0;
     }
     .slide-enter {
         transform: translateX(200px);
