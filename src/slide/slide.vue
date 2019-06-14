@@ -1,7 +1,7 @@
 <template>
     <div class="g-slide">
         <div class="g-slide-window">
-            <div class="g-slide-inner" style="width:200px;" :style="x">
+            <div class="g-slide-inner" style="width:200px;height:200px;">
                 <slot></slot>
             </div>
         </div>
@@ -13,18 +13,18 @@
         name: "Slide",
         data() {
             return {
-                translateX: "0"
+                arr: []
             };
         },
-        computed: {
-            x() {
-                return `transform: translateX(${this.translateX}px)`;
-            }
-        },
         mounted() {
-            setTimeout(() => {
-                this.translateX = "-200";
-            });
+            this.arr = this.$children.map((e, i) => i);
+            this.$children[this.arr[0]].visible = true;
+            setInterval(() => {
+                this.$children[this.arr[0]].visible = false;
+                this.$children[this.arr[1]].visible = true;
+                let firstItem = this.arr.splice(0, 1)[0];
+                this.arr.push(firstItem);
+            }, 3000);
         }
     };
 </script>
@@ -37,15 +37,7 @@
             overflow: hidden;
         }
         &-inner {
-            display: flex;
-            transition: 1s ease-in-out;
-            & div {
-                width: 200px;
-                height: 200px;
-                flex-shrink: 0;
-                border: 1px solid #ddd;
-                background: #eee;
-            }
+            position: relative;
         }
     }
 </style>
