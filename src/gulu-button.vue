@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import Icon from './gulu-icon'
+    import Icon from "./gulu-icon";
     export default {
         name: "GuluButton",
         props: {
@@ -20,16 +20,16 @@
             },
             iconPosition: {
                 type: String,
-                default: 'left',
+                default: "left",
                 validator(value) {
-                    return value === 'left' || value === 'right'
+                    return value === "left" || value === "right";
                 }
             }
         },
         components: {
             "g-icon": Icon
         }
-    }
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -44,36 +44,31 @@
         align-items: center;
         justify-content: center;
         vertical-align: middle;
-
         &:hover {
-            border-color: $border-color-hover;
+            background-color: $button-active-bg;
         }
-
         &:active {
             background-color: $button-active-bg;
         }
-
         &:focus {
             outline: none;
         }
-
         > .content {
             order: 2;
-            padding:0;
+            padding: 0;
         }
-
         > .icon {
             order: 1;
             margin-right: 0.2em;
         }
-        &.icon-right{
-            >.content{
-                order:1;
+        &.icon-right {
+            > .content {
+                order: 1;
             }
-            >.icon{
-                order:2;
-                margin-left:0.2em;
-                margin-right:0;
+            > .icon {
+                order: 2;
+                margin-left: 0.2em;
+                margin-right: 0;
             }
         }
         .loading {
