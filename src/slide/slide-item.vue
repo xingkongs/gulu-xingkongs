@@ -12,8 +12,19 @@
         name: "slide-item",
         data() {
             return {
-                visible: false
+                selected: undefined
             };
+        },
+        props: {
+            name: {
+                type: String,
+                required: true
+            }
+        },
+        computed: {
+            visible() {
+                return this.selected === this.name;
+            }
         }
     };
 </script>

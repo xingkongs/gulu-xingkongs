@@ -16,15 +16,25 @@
                 arr: []
             };
         },
+        props: {
+            selected: {
+                type: String
+            }
+        },
         mounted() {
-            this.arr = this.$children.map((e, i) => i);
-            this.$children[this.arr[0]].visible = true;
-            setInterval(() => {
-                this.$children[this.arr[0]].visible = false;
-                this.$children[this.arr[1]].visible = true;
-                let firstItem = this.arr.splice(0, 1)[0];
-                this.arr.push(firstItem);
-            }, 3000);
+            this.updateChildren();
+        },
+        updated() {
+            this.updateChildren();
+        },
+        methods: {
+            updateChildren() {
+                let first = this.$children[0];
+                let selected = this.selected || first.name;
+                this.$children.forEach(item => {
+                    item.selected = selected;
+                });
+            }
         }
     };
 </script>

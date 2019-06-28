@@ -1,14 +1,14 @@
 <template>
     <div id="app">
         <div class="box">
-            <g-slide>
-                <g-slide-item>
+            <g-slide :selected=selected>
+                <g-slide-item name="1">
                     <div class="slide_box">1</div>
                 </g-slide-item>
-                <g-slide-item>
+                <g-slide-item name="2">
                     <div class="slide_box">2</div>
                 </g-slide-item>
-                <g-slide-item>
+                <g-slide-item name="3">
                     <div class="slide_box">3</div>
                 </g-slide-item>
             </g-slide>
@@ -26,9 +26,14 @@
             "GSlideItem": slideItem
         },
         data() {
-            return {};
+            return {
+                selected: "1"
+            };
         },
         created() {
+            setTimeout(() => {
+                this.selected = "2";
+            }, 3000);
         },
         destroyed() {
         },
