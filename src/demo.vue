@@ -1,15 +1,15 @@
 <template>
     <div id="app">
         <div class="box">
-            <g-slide :selected=selected>
+            <g-slide :selected.sync=selected>
                 <g-slide-item name="1">
-                    <div class="slide_box">1</div>
+                    <div class="slide_box">0</div>
                 </g-slide-item>
                 <g-slide-item name="2">
-                    <div class="slide_box">2</div>
+                    <div class="slide_box">1</div>
                 </g-slide-item>
                 <g-slide-item name="3">
-                    <div class="slide_box">3</div>
+                    <div class="slide_box">2</div>
                 </g-slide-item>
             </g-slide>
         </div>
@@ -31,9 +31,6 @@
             };
         },
         created() {
-            setTimeout(() => {
-                this.selected = "2";
-            }, 3000);
         },
         destroyed() {
         },
@@ -48,13 +45,16 @@
         box-sizing: border-box;
     }
     .box {
-        margin: 50px 200px 80px;
+        margin: 50px auto 80px;
         padding: 2px;
     }
     .slide_box {
-        width: 200px;
         height: 200px;
-        border: 1px solid #ddd;
-        background: #eee;
+        border: 1px solid #f2f2f2;
+        background: #fafafa;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
