@@ -1,12 +1,12 @@
 <template>
-    <div class="g-slide">
+    <div class="g-slide" @mouseenter="onMouseEnter" @mouseleave="startPlay" @touchstart="onTouchStart" @touchend="onTouchEnd">
         <div class="g-slide-window">
             <div class="g-slide-inner">
                 <slot></slot>
             </div>
         </div>
         <div class="g-slide-slots">
-            <div v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1)">{{n-1}}</div>
+            <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1)">{{n-1}}</span>
         </div>
     </div>
 </template>
@@ -18,7 +18,8 @@
             return {
                 timeId: undefined,
                 childrenLength: 0,
-                lastSelectedIndex: undefined
+                lastSelectedIndex: undefined,
+                startTouch: undefined
             };
         },
         props: {
@@ -28,14 +29,17 @@
             },
             selected: {
                 type: String
+            },
+            autoPlayDelay: {
+                type: Number,
+                default: 5000
             }
         },
         mounted() {
-            this.lastSelectedIndex = this.selectedIndex;
             this.childrenLength = this.$children.length;
             this.updateChildren();
             if (this.autoPlay) {
-                this.palyAutomatically();
+                this.playAutomatically();
             }
         },
         updated() {
@@ -50,15 +54,49 @@
             }
         },
         methods: {
-            palyAutomatically() {
+            onMouseEnter() {
+                this.pause();
+                this.timeId = undefined;
+            },
+            startPlay() {
+                if (this.timeId) {
+                    this.timeId = undefined;
+                }
+                this.playAutomatically();
+            },
+            onTouchStart(e) {
+                this.pause();
+                this.startTouch = e.changedTouches[0];
+            },
+            onTouchEnd(e) {
+                let {clientX: x1, clientY: y1} = this.startTouch;
+                let {clientX: x2, clientY: y2} = e.changedTouches[0];
+                let distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+                let deltaY = Math.abs(y1 - y2);
+                let rate = distance / deltaY;
+                if (rate > 2) {
+                    if (x1 > x2) {
+                        this.select(this.selectedIndex + 1);
+                    } else {
+                        this.select(this.selectedIndex - 1);
+                    }
+                }
+                this.$nextTick(() => {
+                    this.startPlay();
+                });
+            },
+            playAutomatically() {
                 if (this.timeId) {return;}
                 let run = () => {
                     let index = this.names.indexOf(this.selected);
                     let newIndex = index + 1;
                     this.select(newIndex);
-                    setTimeout(run, 3000);
+                    setTimeout(run, this.autoPlayDelay);
                 };
-                this.timeId = setTimeout(run, 3000);
+                this.timeId = setTimeout(run, this.autoPlayDelay);
+            },
+            pause() {
+                window.clearTimeout(this.timeId);
             },
             select(index) {
                 this.lastSelectedIndex = this.selectedIndex;
