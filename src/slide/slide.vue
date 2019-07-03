@@ -1,12 +1,12 @@
 <template>
-    <div class="g-slide" @mouseenter="onMouseEnter" @mouseleave="startPlay" @touchstart="onTouchStart" @touchend="onTouchEnd">
+    <div class="g-slide" @mouseenter="onMouseEnter" @mouseleave="startPlay" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
         <div class="g-slide-window">
             <div class="g-slide-inner">
                 <slot></slot>
             </div>
         </div>
         <div class="g-slide-slots">
-            <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1)">{{n-1}}</span>
+            <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1,true)">{{n-1}}</span>
         </div>
     </div>
 </template>
@@ -19,7 +19,8 @@
                 timeId: undefined,
                 childrenLength: 0,
                 lastSelectedIndex: undefined,
-                startTouch: undefined
+                startTouch: undefined,
+                serial: true
             };
         },
         props: {
@@ -56,17 +57,16 @@
         methods: {
             onMouseEnter() {
                 this.pause();
-                this.timeId = undefined;
             },
             startPlay() {
-                if (this.timeId) {
-                    this.timeId = undefined;
-                }
                 this.playAutomatically();
             },
             onTouchStart(e) {
                 this.pause();
                 this.startTouch = e.changedTouches[0];
+            },
+            onTouchMove() {
+                this.serial = true;
             },
             onTouchEnd(e) {
                 let {clientX: x1, clientY: y1} = this.startTouch;
@@ -97,8 +97,10 @@
             },
             pause() {
                 window.clearTimeout(this.timeId);
+                this.timeId = undefined;
             },
-            select(index) {
+            select(index, isSerial) {
+                this.serial = !isSerial;
                 this.lastSelectedIndex = this.selectedIndex;
                 if (index === -1) {index = this.names.length - 1;}
                 if (index === this.names.length) { index = 0; }
@@ -109,7 +111,7 @@
                 let selected = this.selected || first.name;
                 this.$children.forEach(item => {
                     let reverse = this.lastSelectedIndex > this.selectedIndex;
-                    if (this.timeId) {
+                    if (this.serial) {
                         if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
                             reverse = false;
                         }
