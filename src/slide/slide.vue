@@ -6,7 +6,9 @@
             </div>
         </div>
         <div class="g-slide-slots">
+            <span @click="prev"> < </span>
             <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1,true)">{{n-1}}</span>
+            <span @click="next"> > </span>
         </div>
     </div>
 </template>
@@ -98,6 +100,12 @@
             pause() {
                 window.clearTimeout(this.timeId);
                 this.timeId = undefined;
+            },
+            prev(){
+                this.select(this.selectedIndex - 1)
+            },
+            next(){
+                this.select(this.selectedIndex + 1)
             },
             select(index, isSerial) {
                 this.serial = !isSerial;
