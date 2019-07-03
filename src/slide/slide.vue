@@ -6,16 +6,18 @@
             </div>
         </div>
         <div class="g-slide-slots">
-            <span @click="prev"> < </span>
+            <span @click="prev" class="g-slide-slots_icon"> <g-icon name="left"></g-icon> </span>
             <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1,true)">{{n-1}}</span>
-            <span @click="next"> > </span>
+            <span @click="next" class="g-slide-slots_icon"> <g-icon name="right"></g-icon> </span>
         </div>
     </div>
 </template>
 
 <script>
+    import GIcon from "../gulu-icon";
     export default {
         name: "Slide",
+        components: {GIcon},
         data() {
             return {
                 timeId: undefined,
@@ -39,7 +41,7 @@
             }
         },
         mounted() {
-            this.childrenLength = this.$children.length;
+            this.childrenLength = this.items.length;
             this.updateChildren();
             if (this.autoPlay) {
                 this.playAutomatically();
@@ -53,7 +55,10 @@
                 return this.names.indexOf(this.selected) || 0;
             },
             names() {
-                return this.$children.map(item => item.name);
+                return this.items.map(item => item.name);
+            },
+            items() {
+                return this.$children.filter(vm => vm.$options.name === "slide-item");
             }
         },
         methods: {
@@ -93,7 +98,7 @@
                     let index = this.names.indexOf(this.selected);
                     let newIndex = index + 1;
                     this.select(newIndex);
-                    setTimeout(run, this.autoPlayDelay);
+                    this.timeId = setTimeout(run, this.autoPlayDelay);
                 };
                 this.timeId = setTimeout(run, this.autoPlayDelay);
             },
@@ -101,11 +106,11 @@
                 window.clearTimeout(this.timeId);
                 this.timeId = undefined;
             },
-            prev(){
-                this.select(this.selectedIndex - 1)
+            prev() {
+                this.select(this.selectedIndex - 1);
             },
-            next(){
-                this.select(this.selectedIndex + 1)
+            next() {
+                this.select(this.selectedIndex + 1);
             },
             select(index, isSerial) {
                 this.serial = !isSerial;
@@ -120,10 +125,10 @@
                 this.$children.forEach(item => {
                     let reverse = this.lastSelectedIndex > this.selectedIndex;
                     if (this.serial) {
-                        if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
+                        if (this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0) {
                             reverse = false;
                         }
-                        if (this.lastSelectedIndex === 0 && this.selectedIndex === this.$children.length - 1) {
+                        if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1) {
                             reverse = true;
                         }
                     }
@@ -163,12 +168,16 @@
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
+                user-select: none;
                 &.active {
                     background: black;
                     color: #fff;
                     cursor: default;
                 }
             }
+        }
+        &-slots_icon {
+            font-size: 12px;
         }
     }
 </style>
