@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="g-slide-slots" v-if="childrenLength">
-            <span @click="prev" class="g-slide-slots_icon"> <g-icon name="left"></g-icon> </span>
+            <span @click="onClickPrev" class="g-slide-slots_icon"> <g-icon name="left"></g-icon> </span>
             <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1,true)">{{n-1}}</span>
-            <span @click="next" class="g-slide-slots_icon"> <g-icon name="right"></g-icon> </span>
+            <span @click="onClickNext" class="g-slide-slots_icon"> <g-icon name="right"></g-icon> </span>
         </div>
     </div>
 </template>
@@ -106,10 +106,10 @@
                 window.clearTimeout(this.timeId);
                 this.timeId = undefined;
             },
-            prev() {
+            onClickPrev() {
                 this.select(this.selectedIndex - 1);
             },
-            next() {
+            onClickNext() {
                 this.select(this.selectedIndex + 1);
             },
             select(index, isSerial) {
