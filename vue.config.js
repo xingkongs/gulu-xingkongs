@@ -1,3 +1,11 @@
+const path = require("path");
 module.exports = {
-    publicPath: "./"
+    publicPath: "./",
+    css: {
+        loaderOptions: {
+            sass: {
+                includePaths: [path.join(__dirname, "src")]
+            }
+        }
+    }
 };
