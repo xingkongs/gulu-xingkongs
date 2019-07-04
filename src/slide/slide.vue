@@ -5,7 +5,7 @@
                 <slot></slot>
             </div>
         </div>
-        <div class="g-slide-slots">
+        <div class="g-slide-slots" v-if="childrenLength">
             <span @click="prev" class="g-slide-slots_icon"> <g-icon name="left"></g-icon> </span>
             <span v-for="n in childrenLength" :class="{active:selectedIndex===(n-1)}" @click="select(n-1,true)">{{n-1}}</span>
             <span @click="next" class="g-slide-slots_icon"> <g-icon name="right"></g-icon> </span>
@@ -58,7 +58,7 @@
                 return this.items.map(item => item.name);
             },
             items() {
-                return this.$children.filter(vm => vm.$options.name === "slide-item");
+                return this.$children.filter(vm => vm.$options.name === "slide-item") || [];
             }
         },
         methods: {
@@ -120,9 +120,9 @@
                 this.$emit("update:selected", this.names[index]);
             },
             updateChildren() {
-                let first = this.$children[0];
+                let first = this.items[0];
                 let selected = this.selected || first.name;
-                this.$children.forEach(item => {
+                this.items.forEach(item => {
                     let reverse = this.lastSelectedIndex > this.selectedIndex;
                     if (this.serial) {
                         if (this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0) {
