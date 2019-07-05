@@ -24,6 +24,7 @@
 </script>
 
 <style scoped lang="scss">
+    @import "../style/var";
     .g-tabs-head{
         display:flex;
         border-bottom:1px solid #eee;
@@ -32,7 +33,7 @@
             position: absolute;
             bottom:0;
             width:100px;
-            border-bottom:1px solid blue;
+            border-bottom:1px solid $border-color-active;
             transition:all 200ms ease-in;
         }
         & .actionsWrapper{

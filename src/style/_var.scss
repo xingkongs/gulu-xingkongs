@@ -1,6 +1,7 @@
 $border-color-dark: #aaa;
 $border-color-hover: #666;
 $border-color: #f0f0f0;
+$border-color-active: #555;
 $border-radius: 4px;
 $button-active-bg: #eee;
 $button-bg: white;
@@ -13,7 +14,7 @@ $input-border-color-hover: #bbb;
 $input-border-color: #e6e6e6;
 $input-box-shadow-error: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px #eda4a2;
 $input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(59, 180, 242, .3);
-$tabs-active-text: blue;
+$tabs-active-text: #333;
 $tabs-disabled-text: grey;
 $toast-animation-delay: 300ms;
 $toast-bg: rgba(0, 0, 0, 0.75);
