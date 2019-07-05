@@ -17,14 +17,9 @@
 </template>
 
 <script>
-    import slide from "./slide/slide";
-    import slideItem from "./slide/slide-item";
+    import "./app";
     export default {
         name: "demo",
-        components: {
-            "gSlide": slide,
-            "GSlideItem": slideItem
-        },
         data() {
             return {
                 selected: "1"
