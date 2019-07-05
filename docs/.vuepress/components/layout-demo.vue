@@ -8,7 +8,7 @@
                 <g-footer class="footer">footer</g-footer>
             </g-layout>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(0)">源码</span>
+                <span class="toggleSpan" @click="toggle(0)">< ></span>
                 <template v-if="preVisible[0]">
                     <pre><code>{{content1.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -25,7 +25,7 @@
                 <g-footer class="footer">footer</g-footer>
             </g-layout>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(1)">源码</span>
+                <span class="toggleSpan" @click="toggle(1)">< ></span>
                 <template v-if="preVisible[1]">
                     <pre><code>{{content2.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -43,7 +43,7 @@
                 <g-footer class="footer">footer</g-footer>
             </g-layout>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(2)">源码</span>
+                <span class="toggleSpan" @click="toggle(2)">< ></span>
                 <template v-if="preVisible[2]">
                     <pre><code>{{content3.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -61,7 +61,7 @@
                 </g-layout>
             </g-layout>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(3)">源码</span>
+                <span class="toggleSpan" @click="toggle(3)">< ></span>
                 <template v-if="preVisible[3]">
                     <pre><code>{{content4.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -140,20 +140,7 @@
 
 
 <style scoped lang="scss">
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .box {
-        overflow: hidden;
-        padding: 20px;
-        margin: 20px;
-        border: 1px solid #f0f0f0;
-    }
-    h3 {
-        margin-bottom: 20px;
-    }
+    @import "./common";
     .layout--wrapper {
         min-height: 30vh;
     }
@@ -186,22 +173,5 @@
         align-items: center;
         justify-content: center;
     }
-    .g-collapse {
-        border: none;
-        margin: 20px auto;
-    }
-    .g-collapse-item > .g-collapse-title {
-        display: inline-block;
-    }
-    .toggerWrapper {
-        margin: 20px auto;
-        .toggleSpan {
-            user-select: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #f0f0f0;
-            cursor: pointer;
-            line-height: 1;
-        }
-    }
+
 </style>

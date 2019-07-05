@@ -4,7 +4,7 @@
                 :selected.sync="selected"
                 :loadData="loadData"></g-cascader>
         <div class="toggerWrapper">
-            <span class="toggleSpan" @click="toggle(0)">源码</span>
+            <span class="toggleSpan" @click="toggle(0)">< ></span>
             <template v-if="preVisible[0]">
                 <pre><code>{{content1.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 <pre><code>{{content.replace(/^ {11}/gm, "").trim()}}</code></pre>
@@ -95,34 +95,5 @@
 </script>
 
 <style scoped lang="scss">
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .box {
-        overflow: hidden;
-        padding: 20px 20px;
-        margin: 20px 0;
-        border: 1px solid #f0f0f0;
-        min-height: 50vh;
-    }
-    h3 {
-        margin-bottom: 20px;
-    }
-    .g-collapse {
-        border: none;
-        margin: 20px auto;
-    }
-    .toggerWrapper {
-        margin: 20px auto;
-        .toggleSpan {
-            user-select: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #f0f0f0;
-            cursor: pointer;
-            line-height: 1;
-        }
-    }
+    @import "./common";
 </style>

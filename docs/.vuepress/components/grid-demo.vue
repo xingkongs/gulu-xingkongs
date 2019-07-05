@@ -17,7 +17,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(0)">源码</span>
+                <span class="toggleSpan" @click="toggle(0)">< ></span>
                 <template v-if="preVisible[0]">
                     <pre><code>{{content1.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -40,7 +40,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(1)">源码</span>
+                <span class="toggleSpan" @click="toggle(1)">< ></span>
                 <template v-if="preVisible[1]">
                     <pre><code>{{content2.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -63,7 +63,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(2)">源码</span>
+                <span class="toggleSpan" @click="toggle(2)">< ></span>
                 <template v-if="preVisible[2]">
                     <pre><code>{{content3.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -80,7 +80,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(3)">源码</span>
+                <span class="toggleSpan" @click="toggle(3)">< ></span>
                 <template v-if="preVisible[3]">
                     <pre><code>{{content4.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -100,7 +100,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(4)">源码</span>
+                <span class="toggleSpan" @click="toggle(4)">< ></span>
                 <template v-if="preVisible[4]">
                     <pre><code>{{content5.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -123,7 +123,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(5)">源码</span>
+                <span class="toggleSpan" @click="toggle(5)">< ></span>
                 <template v-if="preVisible[5]">
                     <pre><code>{{content6.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -140,7 +140,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(6)">源码</span>
+                <span class="toggleSpan" @click="toggle(6)">< ></span>
                 <template v-if="preVisible[6]">
                     <pre><code>{{content7.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -160,7 +160,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(7)">源码</span>
+                <span class="toggleSpan" @click="toggle(7)">< ></span>
                 <template v-if="preVisible[7]">
                     <pre><code>{{content8.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -183,7 +183,7 @@
                 </g-col>
             </g-row>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(8)">源码</span>
+                <span class="toggleSpan" @click="toggle(8)">< ></span>
                 <template v-if="preVisible[8]">
                     <pre><code>{{content9.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -341,20 +341,7 @@
 </script>
 
 <style scoped lang="scss">
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .box {
-        overflow: hidden;
-        padding: 20px;
-        margin: 20px;
-        border: 1px solid #f0f0f0;
-    }
-    h3 {
-        margin-bottom: 20px;
-    }
+    @import "./common";
     .row {
         margin: 10px auto;
         outline: 1px solid #f0f0f0;
@@ -376,23 +363,5 @@
     }
     .reset {
         height: 100px;
-    }
-    .g-collapse {
-        border: none;
-        margin: 20px auto;
-    }
-    .g-collapse-item > .g-collapse-title {
-        display: inline-block;
-    }
-    .toggerWrapper {
-        margin: 20px auto;
-        .toggleSpan {
-            user-select: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #f0f0f0;
-            cursor: pointer;
-            line-height: 1;
-        }
     }
 </style>

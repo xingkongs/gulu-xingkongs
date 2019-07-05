@@ -6,7 +6,7 @@
             <g-button :loading="loading2" icon="settings" @click="loading2 = !loading2">设置</g-button>
             <g-button :loading="loading3" icon="settings" icon-position="right" @click="loading3 = !loading3">设置</g-button>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(0)">源码</span>
+                <span class="toggleSpan" @click="toggle(0)">< ></span>
                 <template v-if="preVisible[0]">
                     <pre><code>{{content1.replace(/^ {11}/gm, "").trim()}}</code></pre>
                     <pre><code>{{content.replace(/^ {11}/gm, "").trim()}}</code></pre>
@@ -21,7 +21,7 @@
                 <g-button icon="right" icon-position="right">下一页</g-button>
             </g-button-group>
             <div class="toggerWrapper">
-                <span class="toggleSpan" @click="toggle(1)">源码</span>
+                <span class="toggleSpan" @click="toggle(1)">< ></span>
                 <template v-if="preVisible[1]">
                     <pre><code>{{content2.replace(/^ {11}/gm, "").trim()}}</code></pre>
                 </template>
@@ -80,31 +80,5 @@ loading3: false,
 </script>
 
 <style scoped lang="scss">
-    .box {
-        padding: 20px 20px;
-        margin: 20px 0;
-        border: 1px solid #f0f0f0;
-    }
-    h3 {
-        margin-bottom: 20px;
-    }
-    .g-collapse {
-        border: none;
-        margin: 20px auto;
-    }
-    .g-collapse-item > .g-collapse-title {
-        display: inline-block;
-    }
-    .toggerWrapper {
-        margin: 20px auto;
-        .toggleSpan {
-            user-select: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #f0f0f0;
-            cursor: pointer;
-            line-height: 1;
-        }
-    }
-
+    @import "./common";
 </style>
