@@ -20,6 +20,7 @@ module.exports = {
                     "/components/popover/",
                     "/components/collapse/",
                     "/components/cascader/",
+                    "/components/slide/",
                 ]
             },
         ]
