@@ -63,10 +63,11 @@
 </script>
 
 <style scoped lang="scss">
+    @import "style/var";
     .gulu-nav {
-        border: 1px solid red;
         display: flex;
         align-items: center;
+        border-bottom: 1px solid $grey;
         & > * {
             cursor: pointer;
             user-select: none;

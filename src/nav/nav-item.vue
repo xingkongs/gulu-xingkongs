@@ -31,10 +31,20 @@
 </script>
 
 <style scoped lang="scss">
+    @import "style/var";
     .gulu-nav-item {
         padding: 0.5em 1em;
         &.selected {
-            background: red;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-bottom: 2px solid $blue;
+            }
         }
     }
 </style>
