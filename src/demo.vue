@@ -1,17 +1,11 @@
 <template>
     <div id="app">
         <div class="box">
-            <g-slide :selected.sync=selected>
-                <g-slide-item name="1">
-                    <div class="slide_box">0</div>
-                </g-slide-item>
-                <g-slide-item name="2">
-                    <div class="slide_box">1</div>
-                </g-slide-item>
-                <g-slide-item name="3">
-                    <div class="slide_box">2</div>
-                </g-slide-item>
-            </g-slide>
+            <g-nav :selected.sync="selected">
+                <g-nav-item name="home">首页</g-nav-item>
+                <g-nav-item name="about">关于</g-nav-item>
+                <g-nav-item name="hire">招聘</g-nav-item>
+            </g-nav>
         </div>
     </div>
 </template>
@@ -22,7 +16,7 @@
         name: "demo",
         data() {
             return {
-                selected: "1"
+                selected: ["home"]
             };
         },
         created() {
