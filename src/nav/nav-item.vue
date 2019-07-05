@@ -12,11 +12,15 @@
                 selected: false
             };
         },
+        inject: ["root"],
         props: {
             name: {
                 type: String,
                 required: true
             }
+        },
+        created() {
+            this.root.addItems(this);
         },
         methods: {
             onClick() {

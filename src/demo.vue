@@ -3,7 +3,12 @@
         <div class="box">
             <g-nav :selected.sync="selected">
                 <g-nav-item name="home">首页</g-nav-item>
-                <g-nav-item name="about">关于</g-nav-item>
+                <g-sub-nav>
+                    <template slot="title">关于</template>
+                    <g-nav-item name="culture">企业文化</g-nav-item>
+                    <g-nav-item name="developers">开发者</g-nav-item>
+                    <g-nav-item name="contacts">联系方式</g-nav-item>
+                </g-sub-nav>
                 <g-nav-item name="hire">招聘</g-nav-item>
             </g-nav>
         </div>
@@ -16,7 +21,7 @@
         name: "demo",
         data() {
             return {
-                selected: ["home"]
+                selected: ["culture"]
             };
         },
         created() {
@@ -36,14 +41,5 @@
     .box {
         margin: 50px auto 80px;
         padding: 2px;
-    }
-    .slide_box {
-        height: 200px;
-        border: 1px solid #f2f2f2;
-        background: #fafafa;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

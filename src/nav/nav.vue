@@ -7,6 +7,11 @@
 <script>
     export default {
         name: "GuluNav",
+        data() {
+            return {
+                items: []
+            };
+        },
         props: {
             selected: {
                 type: Array,
@@ -17,19 +22,22 @@
                 default: false
             }
         },
+        provide() {
+            return {
+                root: this
+            };
+        },
         mounted() {
             this.updateChildren();
             this.listenToItems();
-        },
-        computed: {
-            items() {
-                return this.$children.filter(vm => vm.$options.name === "GuluNavItem");
-            }
         },
         updated() {
             this.updateChildren();
         },
         methods: {
+            addItems(vm) {
+                this.items.push(vm);
+            },
             listenToItems() {
                 this.items.map(item => {
                     item.$on("add:selected", (name) => {
