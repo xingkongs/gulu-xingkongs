@@ -67,5 +67,12 @@
         border: 1px solid red;
         display: flex;
         align-items: center;
+        & > * {
+            cursor: pointer;
+            user-select: none;
+            &.selected {
+                cursor: default;
+            }
+        }
     }
 </style>
