@@ -56,7 +56,7 @@
 
 <script>
     import GuluPopover from "../../../src/gulu-popover";
-    import Button from "../../../src/gulu-button";
+    import Button from "../../../src/button/gulu-button";
     export default {
         name: "button-demo",
         components: {

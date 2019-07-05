@@ -15,7 +15,7 @@
 
 <script>
     import Vue from "vue";
-    import GuluButton from "../../../src/gulu-button";
+    import GuluButton from "../../../src/button/gulu-button";
     import plugin from "../../../src/plugin";
     Vue.use(plugin);
     export default {

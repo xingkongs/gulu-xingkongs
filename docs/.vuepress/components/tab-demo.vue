@@ -37,7 +37,7 @@
     import GuluTabsPane from "../../../src/tabs/gulu-tabs-pane";
     import GuluTabs from "../../../src/tabs/gulu-tabs";
     import GuluIcon from "../../../src/gulu-icon";
-    import GuluButton from "../../../src/gulu-button";
+    import GuluButton from "../../../src/button/gulu-button";
     export default {
         name: "tab-demo",
         components: {

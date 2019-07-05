@@ -31,8 +31,8 @@
 </template>
 
 <script>
-    import Button from "../../../src/gulu-button";
-    import ButtonGroup from "../../../src/button-group";
+    import Button from "../../../src/button/gulu-button";
+    import ButtonGroup from "../../../src/button/button-group";
     export default {
         name: "button-demo",
         components: {
