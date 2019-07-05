@@ -5,10 +5,7 @@
             <g-icon class="icon" name="down"></g-icon>
         </div>
         <div class="popover" v-if="popoverVisible&&source.length">
-            <gulu-cascader-items :items="source" :height="height"
-                    :selected="selected"
-                    :loading-item="loadingItem"
-                    @update:selected="updateSelected" :loadData="loadData"></gulu-cascader-items>
+            <gulu-cascader-items :items="source" :height="height" :selected="selected" :loading-item="loadingItem" @update:selected="updateSelected" :loadData="loadData"></gulu-cascader-items>
         </div>
     </div>
 </template>
@@ -131,6 +128,7 @@
             padding: 0 0.8em;
             .icon {
                 color: #ccc;
+                font-size: 12px;
             }
         }
         & > .popover {
